@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.fundforchangetest.R;
+import com.example.fundforchangetest.activities.home;
 import com.example.fundforchangetest.activities.profile;
 import com.example.fundforchangetest.activities.user.event.createEventFragment;
 import com.example.fundforchangetest.activities.user.eventRequest.pendingEvents;
@@ -102,6 +103,12 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
                 ft2.replace(R.id.container, new createEventFragment());
                 ft2.addToBackStack("tag_back");
                 ft2.commit();
+
+                break;
+                case  (R.id.nav_see_event):
+                //temp = new Share();
+                    Intent intent1 = new Intent(UserMainActivity.this, home.class);
+                    startActivity(intent1);
 
                 break;
 

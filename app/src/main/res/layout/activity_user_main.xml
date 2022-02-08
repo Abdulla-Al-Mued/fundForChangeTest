@@ -24,11 +24,11 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#AC9393"
+            android:background="#BAB87E28"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:title=" "
-            app:navigationIcon="@drawable/ic_nav"
+            app:navigationIcon="@drawable/ic_menu"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp"
             >
