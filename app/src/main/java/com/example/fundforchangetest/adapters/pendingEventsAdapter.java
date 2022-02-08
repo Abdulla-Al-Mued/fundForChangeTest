@@ -20,7 +20,7 @@ public class pendingEventsAdapter extends RecyclerView.Adapter<pendingEventsAdap
 
     List<pendingModel> datalist;
     private Context mCtx;
-    String txt;
+
 
     public pendingEventsAdapter(List<pendingModel> datalist, Context mCtx) {
         this.datalist = datalist;
@@ -43,7 +43,6 @@ public class pendingEventsAdapter extends RecyclerView.Adapter<pendingEventsAdap
         holder.t1.setText(datalist.get(position).getName());
         holder.t2.setText(datalist.get(position).getDescription());
 
-        txt = datalist.get(position).getName();
     }
 
     @Override
@@ -71,7 +70,6 @@ public class pendingEventsAdapter extends RecyclerView.Adapter<pendingEventsAdap
             pendingModel product = datalist.get(getAdapterPosition());
             Intent intent = new Intent(mCtx, pendingDetails.class);
             intent.putExtra("product", product);
-            intent.putExtra("name",txt);
             mCtx.startActivity(intent);
         }
     }

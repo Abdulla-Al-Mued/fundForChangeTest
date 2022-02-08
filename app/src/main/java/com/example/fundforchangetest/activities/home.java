@@ -45,7 +45,22 @@ public class home extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
-        db.collection("students").whereEqualTo("status","pending")
+        showItems();
+
+        profileBtn = findViewById(R.id.profileBtn);
+        profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(home.this, LogIn.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    public void showItems(){
+
+        db.collection("event").whereEqualTo("status","accepted")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -62,21 +77,6 @@ public class home extends AppCompatActivity {
                         adapter.notifyDataSetChanged();
                     }
                 });
-
-        //showItems();
-
-        profileBtn = findViewById(R.id.profileBtn);
-        profileBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(home.this, LogIn.class);
-                startActivity(intent);
-            }
-        });
-
-    }
-
-    public void showItems(){
 
     }
 }
