@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activities.user.event.createEventFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#97DFDB">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/shape"
+            android:orientation="vertical">
+
+
+
+            <!--            <com.google.android.material.textfield.TextInputLayout-->
+            <!--                android:id="@+id/donationTypeFieldLayout"-->
+            <!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+
+            <!--                >-->
+
+            <!--                <AutoCompleteTextView-->
+            <!--                    android:id="@+id/donationTypeField"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:inputType="none"-->
+            <!--                    android:text="Donation Type" />-->
+
+            <!--            </com.google.android.material.textfield.TextInputLayout>-->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Event Name"
+                android:id="@+id/event_Name"
+                android:textColorHint="#8F8383"
+                app:boxStrokeColor="@color/black"
+                app:hintTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_baseline_event_24"
+                app:startIconTint="@color/black"
+                tools:ignore="DuplicateIds,InvalidId"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eventName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textMultiLine"
+                    android:outlineSpotShadowColor="@color/black"
+                    app:startIconDrawable="@drawable/ic_baseline_event_24"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/eventDescriptionField"
+
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:hint="Event Description"
+                android:textColorHint="#8F8383"
+                app:boxStrokeColor="@color/black"
+                app:hintTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_description"
+                app:startIconTint="@color/black"
+                tools:ignore="InvalidId">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textMultiLine"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:hint="Event Location"
+                android:id="@+id/eventLocation"
+                android:textColorHint="#8F8383"
+                app:boxStrokeColor="@color/black"
+                app:hintTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_location"
+                app:startIconTint="@color/black"
+                tools:ignore="InvalidId">
+
+                <com.google.android.material.textfield.TextInputEditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textMultiLine"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/eventDonationGoal"
+
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="Donation Goal"
+                android:textColorHint="#8F8383"
+                app:startIconDrawable="@drawable/ic_goal"
+                app:boxStrokeColor="@color/black"
+                app:hintTextColor="@color/black"
+                app:startIconTint="@color/black"
+                tools:ignore="DuplicateIds,InvalidId">
+
+                <com.google.android.material.textfield.TextInputEditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/createEventemailField"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="Email"
+                app:helperTextTextColor="#FF5252"
+                app:startIconDrawable="@drawable/ic_email"
+                app:boxStrokeColor="@color/black"
+                app:hintTextColor="@color/black"
+                app:startIconTint="@color/black"
+                tools:ignore="DuplicateIds,InvalidId">
+
+                <com.google.android.material.textfield.TextInputEditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/createEventPhoneNumber"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="Phone Number"
+                app:helperTextTextColor="#FF5252"
+                app:startIconDrawable="@drawable/ic_phone"
+                app:boxStrokeColor="@color/black"
+                app:hintTextColor="@color/black"
+                app:startIconTint="@color/black"
+                tools:ignore="InvalidId">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="numberDecimal"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/createEventNid"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="NID"
+                app:helperTextTextColor="#FF5252"
+                app:startIconDrawable="@drawable/ic_nid"
+                app:boxStrokeColor="@color/black"
+                app:hintTextColor="@color/black"
+                app:startIconTint="@color/black"
+                tools:ignore="InvalidId">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="numberDecimal"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/submitBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#60B6B2"
+                android:text="Submit"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>
