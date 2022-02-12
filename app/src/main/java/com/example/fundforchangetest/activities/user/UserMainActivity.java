@@ -23,6 +23,7 @@ import com.example.fundforchangetest.activities.user.eventRequest.pendingEvents;
 import com.example.fundforchangetest.activities.user.home.homeFragment;
 import com.example.fundforchangetest.activities.user.myEvents.myEvent;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class UserMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -35,9 +36,12 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_main);
 
+
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationview = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
+
+        FirebaseAuth.getInstance().signOut();
 
         setSupportActionBar(toolbar);
 
@@ -66,12 +70,14 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
         else{
             super.onBackPressed();
         }
-        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+
     }
 
     public void profile(View view){
 
         Intent intent = new Intent(UserMainActivity.this, profile.class);
+        intent.putExtra("email",getIntent().getStringExtra("email"));
+        intent.putExtra("uid",getIntent().getStringExtra("uid"));
         startActivity(intent);
 
     }

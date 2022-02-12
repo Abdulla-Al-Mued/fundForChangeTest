@@ -29,6 +29,6 @@ public class detailsActivity extends AppCompatActivity {
 
 
         t1.setText(ob.getName());
-        t2.setText(ob.getEmail());
+        t2.setText(ob.getDescription());
     }
 }

@@ -40,7 +40,7 @@ public class commonRecyclerAdapter extends RecyclerView.Adapter<commonRecyclerAd
     public void onBindViewHolder(@NonNull myViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         holder.t1.setText(datalist.get(position).getName());
-        holder.t2.setText(datalist.get(position).getEmail());
+        holder.t2.setText(datalist.get(position).getDescription());
         /*holder.cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
