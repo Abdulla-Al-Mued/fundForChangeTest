@@ -31,6 +31,7 @@ public class createEventFragment extends Fragment {
     Button add;
     addEvent ob ;
     String t1,t2,t3,t4,t5,t6,t7;
+    int t8;
 
 
     public createEventFragment() {
@@ -94,7 +95,8 @@ public class createEventFragment extends Fragment {
                 t5 = txt5.getEditText().getText().toString().trim();
                 t6 = txt6.getEditText().getText().toString().trim();
                 t7 = txt7.getEditText().getText().toString().trim();
-                ob = new addEvent(t1,t2,t3,t4,t5,t6,t7);
+                t8 = Integer.parseInt(t4);
+                ob = new addEvent(t1,t2,t3,t8,t5,t6,t7);
 
                 ob.insert();
                 txt.getEditText().setText("");
