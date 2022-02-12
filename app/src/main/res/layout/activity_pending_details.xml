@@ -158,14 +158,13 @@
                             android:background="#FFFFFF">
 
 
-
-
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="80dp"
                                 android:layout_marginTop="25dp"
                                 android:text="Event Information"
+                                android:textStyle="bold"
                                 android:textColor="@color/black"
                                 android:textSize="20sp" />
 
@@ -187,7 +186,8 @@
                             android:drawablePadding="10dp"
                             android:padding="10dp"
                             android:text="Event Name"
-                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
                             android:textColor="@color/black" />
                         <View
                             android:id="@+id/view6"
@@ -213,7 +213,8 @@
                             android:drawablePadding="10dp"
                             android:padding="10dp"
                             android:text="Event Description"
-                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
 
                             android:textColor="@color/black" />
                         <TextView
@@ -232,7 +233,8 @@
                             android:drawablePadding="10dp"
                             android:padding="10dp"
                             android:text="Event Location"
-                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
                             android:textColor="@color/black" />
                         <TextView
                             android:layout_width="match_parent"
@@ -250,7 +252,8 @@
                             android:drawablePadding="10dp"
                             android:padding="10dp"
                             android:text="Destination Goal"
-                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
                             android:textColor="@color/black" />
                         <TextView
                             android:layout_width="match_parent"
@@ -268,7 +271,8 @@
                             android:drawablePadding="10dp"
                             android:padding="10dp"
                             android:text="Email"
-                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
                             android:textColor="@color/black" />
 
                         <TextView
@@ -287,7 +291,8 @@
                             android:drawablePadding="10dp"
                             android:padding="10dp"
                             android:text="Phone Number"
-                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
                             android:textColor="@color/black" />
                         <TextView
                             android:layout_width="match_parent"
@@ -305,7 +310,8 @@
                             android:drawablePadding="10dp"
                             android:padding="10dp"
                             android:text="NID"
-                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
                             android:textColor="@color/black" />
                         <TextView
                             android:layout_width="match_parent"
@@ -323,7 +329,8 @@
                             android:drawablePadding="10dp"
                             android:padding="10dp"
                             android:text="Account Type"
-                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
                             android:textColor="@color/black" />
 
                         <TextView

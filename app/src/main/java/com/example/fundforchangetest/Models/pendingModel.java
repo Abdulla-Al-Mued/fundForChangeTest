@@ -9,9 +9,10 @@ public class pendingModel implements Serializable {
 
     @Exclude
     public String id;
-    String name, description,location,goal, email,phone, NID;
+    String name, description,location, email,phone, NID;
+    int goal;
 
-    public pendingModel(String name, String description, String location, String goal, String email, String phone, String NID) {
+    public pendingModel(String name, String description, String location, int goal, String email, String phone, String NID) {
         this.name = name;
         this.description = description;
         this.location = location;
@@ -44,11 +45,11 @@ public class pendingModel implements Serializable {
         this.location = location;
     }
 
-    public String getGoal() {
+    public int getGoal() {
         return goal;
     }
 
-    public void setGoal(String goal) {
+    public void setGoal(int goal) {
         this.goal = goal;
     }
 
