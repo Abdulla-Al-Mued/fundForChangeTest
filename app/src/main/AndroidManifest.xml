@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FundForChangeTest">
         <activity
+            android:name=".otpVerification.otpVerification"
+            android:exported="false" />
+        <activity
+            android:name=".activities.signUp"
+            android:exported="false" />
+        <activity
             android:name=".activities.user.eventRequest.pendingDetails"
             android:exported="false" />
         <activity
