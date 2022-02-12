@@ -48,7 +48,7 @@ public class pendingDetails extends AppCompatActivity {
         t1.setText(ob.getName());
         t2.setText(ob.getDescription());
         t3.setText(ob.getLocation());
-        t4.setText(ob.getGoal());
+        t4.setText(String.valueOf(ob.getGoal()));
         t5.setText(ob.getEmail());
         t6.setText(ob.getPhone());
         t7.setText(ob.getNID());

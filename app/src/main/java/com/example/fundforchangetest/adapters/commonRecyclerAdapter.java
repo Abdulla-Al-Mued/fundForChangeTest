@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,7 +41,8 @@ public class commonRecyclerAdapter extends RecyclerView.Adapter<commonRecyclerAd
     public void onBindViewHolder(@NonNull myViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         holder.t1.setText(datalist.get(position).getName());
-        holder.t2.setText(datalist.get(position).getEmail());
+        holder.t2.setText(datalist.get(position).getDescription());
+        holder.goalprogress.setMax(datalist.get(position).getGoal());
         /*holder.cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +65,7 @@ public class commonRecyclerAdapter extends RecyclerView.Adapter<commonRecyclerAd
 
     class myViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView t1,t2;
+        ProgressBar goalprogress;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -70,6 +73,7 @@ public class commonRecyclerAdapter extends RecyclerView.Adapter<commonRecyclerAd
             t1 = itemView.findViewById(R.id.txt1);
             t2 = itemView.findViewById((R.id.txt2));
             //cv = itemView.findViewById(R.id.click);
+            goalprogress = (ProgressBar) itemView.findViewById(R.id.goalprogress);
 
             itemView.setOnClickListener(this);
 

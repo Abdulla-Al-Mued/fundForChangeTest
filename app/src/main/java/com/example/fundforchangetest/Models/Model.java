@@ -7,10 +7,11 @@ import java.io.Serializable;
 public class Model implements Serializable {
 
     @Exclude public String id;
-    String name, description,location,goal, email,phone, NID;
+    String name, description,location, email,phone, NID;
+    int goal;
 
 
-    public Model(String name, String description, String location, String goal, String email, String phone, String NID) {
+    public Model(String name, String description, String location, int goal, String email, String phone, String NID) {
         this.name = name;
         this.description = description;
         this.location = location;
@@ -65,11 +66,11 @@ public class Model implements Serializable {
         this.location = location;
     }
 
-    public String getGoal() {
+    public int getGoal() {
         return goal;
     }
 
-    public void setGoal(String goal) {
+    public void setGoal(int goal) {
         this.goal = goal;
     }
 

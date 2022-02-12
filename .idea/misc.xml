@@ -22,6 +22,11 @@
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/pending_single_row.xml" value="0.209375" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/single_row.xml" value="0.1" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/menu/main_menu.xml" value="0.1" />
+        <entry key="..\:/Users/imtia/AndroidStudioProjects/fundForChangeTest/app/src/main/res/layout/activity_details.xml" value="0.2" />
+        <entry key="..\:/Users/imtia/AndroidStudioProjects/fundForChangeTest/app/src/main/res/layout/activity_pending_details.xml" value="0.2" />
+        <entry key="..\:/Users/imtia/AndroidStudioProjects/fundForChangeTest/app/src/main/res/layout/fragment_create_event.xml" value="0.2" />
+        <entry key="..\:/Users/imtia/AndroidStudioProjects/fundForChangeTest/app/src/main/res/layout/single_row.xml" value="0.2" />
+        <entry key="..\:/Users/imtia/AndroidStudioProjects/fundForChangeTest/app/src/main/res/menu/main_menu.xml" value="0.2" />
       </map>
     </option>
   </component>
@@ -30,5 +35,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.22" />
+      </ProjectState>
+    </option>
   </component>
 </project>

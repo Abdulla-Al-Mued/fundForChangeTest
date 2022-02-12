@@ -17,7 +17,8 @@ import java.util.Map;
 public class addEvent {
 
     FirebaseFirestore dbroot = FirebaseFirestore.getInstance();
-    String  edesc, el, edGoal, email, pn, nid, en;
+    String  edesc, el, email, pn, nid, en;
+    int edGoal;
 
 
     public addEvent()
@@ -26,7 +27,7 @@ public class addEvent {
     }
 
 
-    public addEvent(String t1, String t2, String t3, String t4, String t5, String t6, String t7) {
+    public addEvent(String t1, String t2, String t3, int t4, String t5, String t6, String t7) {
 
         en = t1;
         edesc = t2;
@@ -42,7 +43,7 @@ public class addEvent {
     public void insert(){
 
 
-        Map<String, String> items = new HashMap<>();
+        Map<String, Object> items = new HashMap<>();
 
 
         items.put("name",en);
