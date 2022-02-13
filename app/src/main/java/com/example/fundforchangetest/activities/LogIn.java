@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -23,6 +24,7 @@ public class LogIn extends AppCompatActivity {
     Button btnLogIn, register;
     TextInputLayout uName, uPassword;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    public static String PREFS_NAME = "MyPrefsFile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,17 @@ public class LogIn extends AppCompatActivity {
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAuth.signInWithEmailAndPassword(email, password)
+
+                /*SharedPreferences sharedPreferences = getSharedPreferences(LogIn.PREFS_NAME,0);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                editor.putBoolean("hasLogedIn",true);
+                editor.commit();*/
+
+                Intent intent  = new Intent(getApplicationContext(), UserMainActivity.class);
+                startActivity(intent);
+
+               /* mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(LogIn.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -70,7 +82,7 @@ public class LogIn extends AppCompatActivity {
 
                                 }
                             }
-                        });
+                        });*/
 
 
 

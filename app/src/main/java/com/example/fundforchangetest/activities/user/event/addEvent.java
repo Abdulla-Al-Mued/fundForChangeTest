@@ -1,13 +1,12 @@
 package com.example.fundforchangetest.activities.user.event;
 
 
-import android.content.Context;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -17,8 +16,28 @@ import java.util.Map;
 public class addEvent {
 
     FirebaseFirestore dbroot = FirebaseFirestore.getInstance();
-    String  edesc, el, email, pn, nid, en;
+    String  en, edesc, el, email, pn, nid;
+    TextInputLayout txt,txt2,txt3,txt4,txt5,txt6, txt7;
     int edGoal;
+
+    public addEvent(String en, String edesc, String el, int edGoal, String email, String pn, String nid, TextInputLayout txt, TextInputLayout txt2, TextInputLayout txt3, TextInputLayout txt4, TextInputLayout txt5, TextInputLayout txt6, TextInputLayout txt7) {
+        this.en = en;
+        this.edesc = edesc;
+        this.el = el;
+        this.email = email;
+        this.pn = pn;
+        this.nid = nid;
+        this.txt = txt;
+        this.txt2 = txt2;
+        this.txt3 = txt3;
+        this.txt4 = txt4;
+        this.txt5 = txt5;
+        this.txt6 = txt6;
+        this.txt7 = txt7;
+        this.edGoal = edGoal;
+    }
+
+
 
 
     public addEvent()
@@ -27,46 +46,40 @@ public class addEvent {
     }
 
 
-    public addEvent(String t1, String t2, String t3, int t4, String t5, String t6, String t7) {
 
-        en = t1;
-        edesc = t2;
-        el = t3;
-        edGoal = t4;
-        email = t5;
-        pn = t6;
-        nid = t7;
-
-    }
 
 
     public void insert(){
 
 
-        Map<String, Object> items = new HashMap<>();
+            Map<String, Object> items = new HashMap<>();
 
 
-        items.put("name",en);
-        items.put("description",edesc);
-        items.put("location",el);
-        items.put("goal",edGoal);
-        items.put("email",email);
-        items.put("phone",pn);
-        items.put("NID",nid);
-        items.put("status","pending");
+            items.put("name",en);
+            items.put("description",edesc);
+            items.put("location",el);
+            items.put("goal",edGoal);
+            items.put("email",email);
+            items.put("phone",pn);
+            items.put("NID",nid);
+            items.put("status","pending");
 
 
-        dbroot.collection("event").add(items)
-                .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentReference> task) {
-                        //Toast.makeText(ctx,"Your Request Is Submitted Successfully",Toast.LENGTH_SHORT);
+            dbroot.collection("event").add(items)
+                    .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentReference> task) {
+                            //Toast.makeText(ctx,"Your Request Is Submitted Successfully",Toast.LENGTH_SHORT);
 
 
-                    }
-                });
+                        }
+                    });
+
 
 
     }
+
+
+
 
 }

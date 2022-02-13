@@ -1,7 +1,6 @@
 package com.example.fundforchangetest.activities;
 
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,14 +12,7 @@ import android.widget.Toast;
 
 import com.example.fundforchangetest.R;
 import com.example.fundforchangetest.activities.user.UserMainActivity;
-import com.example.fundforchangetest.otpVerification.otpVerification;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthProvider;
-
-import java.util.concurrent.TimeUnit;
 
 public class signUp extends AppCompatActivity {
 
@@ -58,11 +50,17 @@ public class signUp extends AppCompatActivity {
                         !validateConfirmPassword() | !validateUsername())
                     return;
 
+                /*ob = new temp(txt3.getEditText().getText().toString().trim());
+                ob.setEmail(txt3.getEditText().getText().toString().trim());
+                Toast.makeText(signUp.this, ob.getEmail(), Toast.LENGTH_SHORT).show();*/
+
                 progressBar.setVisibility(View.VISIBLE);
                 register.setVisibility(View.INVISIBLE);
                 login.setVisibility(View.INVISIBLE);
 
-                PhoneAuthProvider.getInstance().verifyPhoneNumber(
+
+
+                /*PhoneAuthProvider.getInstance().verifyPhoneNumber(
                         "+880" + "1" + txt4.getEditText().getText().toString().trim(),
                         60,
                         TimeUnit.SECONDS,
@@ -106,16 +104,17 @@ public class signUp extends AppCompatActivity {
 
                             }
                         }
-                );
+                );*/
 
-                /*Intent intent = new Intent(getApplicationContext(), UserMainActivity.class);
-                startActivity(intent);*/
+                Intent intent = new Intent(getApplicationContext(), UserMainActivity.class);
+                startActivity(intent);
 
             }
         });
 
 
     }
+
 
     private boolean validateFullname() {
 

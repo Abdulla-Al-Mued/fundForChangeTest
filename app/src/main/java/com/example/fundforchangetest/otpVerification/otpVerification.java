@@ -106,7 +106,7 @@ public class otpVerification extends AppCompatActivity {
                                         if(task.isSuccessful()){
                                             Toast.makeText(otpVerification.this, "Verification successful", Toast.LENGTH_SHORT).show();
                                             insertData();
-                                            verification();
+                                            //verification();
                                             Intent intent = new Intent(getApplicationContext(), UserMainActivity.class);
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             startActivity(intent);
@@ -116,7 +116,6 @@ public class otpVerification extends AppCompatActivity {
                                         }
                                     }
                                 });
-
 
                     }
                     else {

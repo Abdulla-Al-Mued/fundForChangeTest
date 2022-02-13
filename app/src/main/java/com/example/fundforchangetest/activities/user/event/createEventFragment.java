@@ -1,20 +1,30 @@
 package com.example.fundforchangetest.activities.user.event;
 
-
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.fundforchangetest.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class createEventFragment extends Fragment {
@@ -31,6 +41,8 @@ public class createEventFragment extends Fragment {
     Button add;
     addEvent ob ;
     String t1,t2,t3,t4,t5,t6,t7;
+    int t8;
+    //private Activity rootView;
 
 
     public createEventFragment() {
@@ -64,6 +76,17 @@ public class createEventFragment extends Fragment {
         }
 
 
+        /**/
+        /*dbroot = FirebaseFirestore.getInstance();
+
+        add = (Button) getView().findViewById(R.id.submitBtn);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //insertdata();
+            }
+        });*/
+
 
 
     }
@@ -80,12 +103,15 @@ public class createEventFragment extends Fragment {
         TextInputLayout txt6 = (TextInputLayout) view.findViewById(R.id.createEventPhoneNumber);
         TextInputLayout txt7 = (TextInputLayout) view.findViewById(R.id.createEventNid);
 
+        String checkEmail = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
 
 
         add = (Button) getView().findViewById(R.id.submitBtn);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
                 t1 = txt.getEditText().getText().toString().trim();
                 t2 = txt2.getEditText().getText().toString().trim();
@@ -94,7 +120,41 @@ public class createEventFragment extends Fragment {
                 t5 = txt5.getEditText().getText().toString().trim();
                 t6 = txt6.getEditText().getText().toString().trim();
                 t7 = txt7.getEditText().getText().toString().trim();
-                ob = new addEvent(t1,t2,t3,t4,t5,t6,t7);
+                t8 = Integer.parseInt(t4);
+
+
+                /*if(t1.isEmpty()){
+                    txt.getEditText().setError("Field Cannot Be empty");
+                }
+                else if(t2.isEmpty()){
+                    txt2.getEditText().setError("Field Cannot Be empty");
+                }
+                else if(t3.isEmpty()){
+                    txt3.getEditText().setError("Field Cannot Be empty");
+                }
+                else if(t4.isEmpty()){
+                    txt4.getEditText().setError("Field Cannot Be empty");
+                }
+                else if(t5.isEmpty() || t5.matches(checkEmail)){
+                    if(t5.isEmpty())
+                        txt5.getEditText().setError("Field Cannot Be empty");
+                    else
+                        txt5.getEditText().setError("Enter a Valid email");
+                }
+                else if(t6.isEmpty() || t6.length()!=11){
+                    if(t6.isEmpty())
+                        txt6.getEditText().setError("Field Cannot Be empty");
+                    else
+                        txt6.getEditText().setError("Invalid number");
+                }
+                else if(t7.isEmpty()){
+                    txt7.getEditText().setError("Field Cannot Be empty");
+                }
+                else{
+
+                }*/
+
+                ob = new addEvent(t1,t2,t3,t8,t5,t5,t7,txt,txt2,txt3,txt4,txt5,txt6,txt7);
 
                 ob.insert();
                 txt.getEditText().setText("");
@@ -109,7 +169,9 @@ public class createEventFragment extends Fragment {
             }
         });
 
+
     }
+
 
 
 
@@ -121,9 +183,44 @@ public class createEventFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_create_event, container, false);
 
+        //insertdata();
+
         return view;
     }
 
 
+    public void insertdata(){
 
+        Map<String, String> items = new HashMap<>();
+
+
+        /*items.put("name",t1.getText().toString().trim());
+        items.put("description",t2.getText().toString().trim());
+        items.put("location",t3.getText().toString().trim());
+        items.put("donation goal",t4.getText().toString().trim());
+        items.put("email",t5.getText().toString().trim());
+        items.put("phone",t6.getText().toString().trim());
+        items.put("NID",t7.getText().toString().trim());
+        items.put("status","pending");
+
+
+        dbroot.collection("event").add(items)
+                .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentReference> task) {
+                        //Toast.makeText(getContext(), "Created Successfully", Toast.LENGTH_SHORT).show();
+                        t1.setText("");
+                        t2.setText("");
+                        t3.setText("");
+                        t4.setText("");
+                        t5.setText("");
+                        t6.setText("");
+                        t7.setText("");
+
+                        Toast.makeText(getContext(), "Created Successfully", Toast.LENGTH_SHORT).show();
+                    }
+                });*/
+
+    }
 }
