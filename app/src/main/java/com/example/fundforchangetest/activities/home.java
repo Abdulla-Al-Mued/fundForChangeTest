@@ -5,11 +5,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.fundforchangetest.Models.Model;
 import com.example.fundforchangetest.R;
+import com.example.fundforchangetest.activities.user.UserMainActivity;
 import com.example.fundforchangetest.adapters.commonRecyclerAdapter;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -58,6 +60,21 @@ public class home extends AppCompatActivity {
             public void onClick(View view) {
 
 
+                SharedPreferences sp = getSharedPreferences("datafile",MODE_PRIVATE);
+                SharedPreferences.Editor ed = sp.edit();
+
+                if(!(sp.contains("email"))){
+
+                    Intent intent = new Intent(home.this , LogIn.class);
+                    startActivity(intent);
+
+                }
+                else {
+                    Intent intent = new Intent(home.this , UserMainActivity.class);
+                    startActivity(intent);
+                }
+
+
                 /*new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -81,8 +98,7 @@ public class home extends AppCompatActivity {
                     }
                 },SPLASH_TIME);*/
 
-                Intent intent = new Intent(home.this , LogIn.class);
-                startActivity(intent);
+
 
 
 

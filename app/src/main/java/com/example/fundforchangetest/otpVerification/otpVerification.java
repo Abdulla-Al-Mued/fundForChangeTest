@@ -109,6 +109,7 @@ public class otpVerification extends AppCompatActivity {
                                             //verification();
                                             Intent intent = new Intent(getApplicationContext(), UserMainActivity.class);
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            FirebaseAuth.getInstance().signOut();
                                             startActivity(intent);
                                         }
                                         else{

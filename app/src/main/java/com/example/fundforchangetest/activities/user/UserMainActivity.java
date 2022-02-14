@@ -41,7 +41,7 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
         navigationview = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
 
-        FirebaseAuth.getInstance().signOut();
+
 
         setSupportActionBar(toolbar);
 

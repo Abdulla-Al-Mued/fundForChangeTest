@@ -36,11 +36,6 @@ public class LogIn extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
-        /*public void signup(View view){
-            Intent intent = new Intent(LogIn.this, signup.class);
-            startActivity(intent);
-        }*/
-
 
         btnLogIn = findViewById(R.id.login);
         register = findViewById(R.id.signup);
@@ -59,30 +54,14 @@ public class LogIn extends AppCompatActivity {
 
                 editor.putBoolean("hasLogedIn",true);
                 editor.commit();*/
-
                 Intent intent  = new Intent(getApplicationContext(), UserMainActivity.class);
                 startActivity(intent);
 
-               /* mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(LogIn.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(task.isSuccessful()){
+                SharedPreferences sp = getSharedPreferences("datafile",MODE_PRIVATE);
+                SharedPreferences.Editor ed = sp.edit();
+                ed.putString("email",uName.getEditText().getText().toString());
+                ed.commit();
 
-
-                                    Intent intent = new Intent(LogIn.this , UserMainActivity.class);
-                                    intent.putExtra("email",mAuth.getCurrentUser().getEmail());
-                                    intent.putExtra("uid",mAuth.getCurrentUser().getUid());
-                                    startActivity(intent);
-
-                                }
-                                else{
-
-                                    Toast.makeText(getApplicationContext(), "Invalid email password", Toast.LENGTH_SHORT).show();
-
-                                }
-                            }
-                        });*/
 
 
 
@@ -100,11 +79,6 @@ public class LogIn extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
-
 
     }
 }
