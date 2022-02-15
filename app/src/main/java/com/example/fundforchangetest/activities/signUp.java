@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,11 +15,20 @@ import android.widget.Toast;
 import com.example.fundforchangetest.R;
 import com.example.fundforchangetest.activities.user.UserMainActivity;
 import com.example.fundforchangetest.otpVerification.otpVerification;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class signUp extends AppCompatActivity {
@@ -28,6 +38,8 @@ public class signUp extends AppCompatActivity {
     Button register,login;
 
     ProgressBar progressBar;
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
     @Override
@@ -99,10 +111,6 @@ public class signUp extends AppCompatActivity {
                                 Intent intent = new Intent(getApplicationContext(), otpVerification.class);
                                 intent.putExtra("Number","01" + txt4.getEditText().getText().toString().trim());
                                 intent.putExtra("bkndOtp",otp);
-                                intent.putExtra("fName",txt1.getEditText().getText().toString().trim());
-                                intent.putExtra("uName",txt2.getEditText().getText().toString().trim());
-                                intent.putExtra("email",txt3.getEditText().getText().toString().trim());
-                                intent.putExtra("password",txt5.getEditText().getText().toString().trim());
                                 startActivity(intent);
 
                             }
@@ -111,6 +119,39 @@ public class signUp extends AppCompatActivity {
 
                 /*Intent intent = new Intent(getApplicationContext(), UserMainActivity.class);
                 startActivity(intent);*/
+
+                SharedPreferences sp = getSharedPreferences("datafile",MODE_PRIVATE);
+                SharedPreferences.Editor ed = sp.edit();
+
+                if(!(sp.contains("email"))){
+
+                    Map<String, String> items = new HashMap<>();
+
+
+                    items.put("name",txt1.getEditText().getText().toString().trim());
+                    items.put("user",txt2.getEditText().getText().toString().trim());
+                    items.put("email",txt3.getEditText().getText().toString().trim());
+                    items.put("phone",txt4.getEditText().getText().toString().trim());
+                    items.put("password",txt5.getEditText().getText().toString().trim());
+                    items.put("role","user");
+
+
+
+                    db.collection("users").add(items)
+                            .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentReference> task) {
+                                    //Toast.makeText(ctx,"Your Request Is Submitted Successfully",Toast.LENGTH_SHORT);
+
+
+                                }
+                            });
+
+                }
+                else {
+                Toast.makeText(signUp.this, "Error Saving Data", Toast.LENGTH_SHORT).show();
+                }
+
 
             }
         });
@@ -194,6 +235,7 @@ public class signUp extends AppCompatActivity {
         String checkPhone = "^01[0-9][9]";
 
         t1 = txt4.getEditText().getText().toString().trim();
+        checkPhoneExist();
 
         if (t1.isEmpty()) {
 
@@ -262,6 +304,39 @@ public class signUp extends AppCompatActivity {
             txt6.setErrorEnabled(false);
             return true;
         }
+    }
+
+    public void checkPhoneExist() {
+
+        db.collection("user").get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                        for(QueryDocumentSnapshot qs : queryDocumentSnapshots){
+
+                            String phone, email;
+                            phone = qs.getString("phone");
+                            email = qs.getString("email");
+
+                            String number = txt4.getEditText().getText().toString().trim();
+                            String mail = txt3.getEditText().getText().toString().trim();
+
+                            if(mail.equals(email)&&(number.equals(phone))){
+                                txt4.getEditText().setError("Phone Number Already Taken");
+                                txt3.getEditText().setError("Email Already Taken");
+
+                                return;
+
+                            }
+                            if((mail.equals(email))&&!(number.equals(phone)))
+                                txt3.getEditText().setError("Email Already Taken");
+                            return;
+
+                        }
+
+                    }
+                });
     }
 
 

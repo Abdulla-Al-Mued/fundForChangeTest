@@ -32,8 +32,7 @@ public class home extends AppCompatActivity {
     FirebaseFirestore db;
     commonRecyclerAdapter adapter;
     private CircleImageView profileBtn;
-    private static int SPLASH_TIME= 1;
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    //private static int SPLASH_TIME= 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -34,7 +35,7 @@ import java.util.concurrent.TimeUnit;
 
 public class otpVerification extends AppCompatActivity {
 
-    String otpBackend;
+    String otpBackend, msg="";
     EditText t1, t2, t3, t4, t5, t6;
     Button submit;
     TextView tvBtn, tv2;
@@ -104,9 +105,11 @@ public class otpVerification extends AppCompatActivity {
                                         submit.setVisibility(View.VISIBLE);
 
                                         if(task.isSuccessful()){
-                                            Toast.makeText(otpVerification.this, "Verification successful", Toast.LENGTH_SHORT).show();
-                                            insertData();
+                                            msg = "verification Complete";
+                                            Toast.makeText(otpVerification.this, msg, Toast.LENGTH_SHORT).show();
+                                            //insertData();
                                             //verification();
+                                            setLogedIn();
                                             Intent intent = new Intent(getApplicationContext(), UserMainActivity.class);
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             FirebaseAuth.getInstance().signOut();
@@ -116,6 +119,7 @@ public class otpVerification extends AppCompatActivity {
                                             Toast.makeText(otpVerification.this, "Enter The Correct Otp Code", Toast.LENGTH_SHORT).show();
                                         }
                                     }
+
                                 });
 
                     }
@@ -172,27 +176,12 @@ public class otpVerification extends AppCompatActivity {
 
     }
 
-    private void verification() {
+    public void setLogedIn() {
 
-        mAuth.createUserWithEmailAndPassword(getIntent().getStringExtra("email"), getIntent().getStringExtra("password"))
-                .addOnCompleteListener(otpVerification.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-
-                        if(task.isSuccessful()){
-
-                            Toast.makeText(getApplicationContext(), "Authenticated",Toast.LENGTH_SHORT);
-
-                        }
-                        else {
-
-                            Toast.makeText(getApplicationContext(),"Error Process",Toast.LENGTH_SHORT);
-
-                        }
-
-                    }
-                });
-
+        SharedPreferences sp = getSharedPreferences("datafile",MODE_PRIVATE);
+        SharedPreferences.Editor ed = sp.edit();
+        ed.putString("email",getIntent().getStringExtra("email"));
+        ed.commit();
     }
 
     private void moveTxtField() {
@@ -296,28 +285,4 @@ public class otpVerification extends AppCompatActivity {
 
     }
 
-    public void insertData(){
-
-        Map<String, String> items = new HashMap<>();
-
-
-        items.put("name",getIntent().getStringExtra("fName"));
-        items.put("user",getIntent().getStringExtra("uName"));
-        items.put("email",getIntent().getStringExtra("email"));
-        items.put("phone",getIntent().getStringExtra("Number"));
-        items.put("password",getIntent().getStringExtra("password"));
-        items.put("role","user");
-
-
-        dbroot.collection("user").add(items)
-                .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentReference> task) {
-                        //Toast.makeText(ctx,"Your Request Is Submitted Successfully",Toast.LENGTH_SHORT);
-
-
-                    }
-                });
-
-    }
 }
