@@ -7,15 +7,27 @@
     android:orientation="vertical"
     tools:context=".activities.home">
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
         <ImageView
             android:layout_width="63dp"
+            android:id="@+id/search_img"
             android:layout_height="match_parent"
             android:padding="5dp"
             android:src="@drawable/sch" />
+
+        <EditText
+            android:id="@+id/search_box"
+            android:inputType="textAutoComplete"
+            android:hint="Search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_toRightOf="@+id/search_img"
+            android:layout_toLeftOf="@+id/profileBtn"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profileBtn"
