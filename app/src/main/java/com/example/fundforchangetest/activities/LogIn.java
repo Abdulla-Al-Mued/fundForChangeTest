@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.fundforchangetest.R;
@@ -30,8 +31,9 @@ public class LogIn extends AppCompatActivity {
     Button btnLogIn, register,frogotPass;
     TextInputLayout uEmail, uPassword;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    public static String PREFS_NAME = "MyPrefsFile";
+    //private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    //public static String PREFS_NAME = "MyPrefsFile";
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class LogIn extends AppCompatActivity {
         uEmail = findViewById(R.id.uName);
         uPassword = findViewById(R.id.uPassword);
         frogotPass = findViewById(R.id.forgot_pass);
+        progressBar = findViewById(R.id.progressbar_login);
 
         frogotPass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +65,8 @@ public class LogIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
+
                 /*SharedPreferences sharedPreferences = getSharedPreferences(LogIn.PREFS_NAME,0);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -70,6 +75,13 @@ public class LogIn extends AppCompatActivity {
 
                 if (!validateEmail() | !validatePassword())
                     return;
+
+
+                progressBar.setVisibility(View.VISIBLE);
+                btnLogIn.setVisibility(View.INVISIBLE);
+                register.setVisibility(View.INVISIBLE);
+                frogotPass.setVisibility(View.INVISIBLE);
+
 
 
 
@@ -92,6 +104,8 @@ public class LogIn extends AppCompatActivity {
 
                                     if(mail.equals(email)&&(pass.equals(password))){
 
+                                        Toast.makeText(LogIn.this, "Log In Success", Toast.LENGTH_SHORT).show();
+
                                         Intent intent  = new Intent(getApplicationContext(), UserMainActivity.class);
                                         startActivity(intent);
 
@@ -101,13 +115,23 @@ public class LogIn extends AppCompatActivity {
                                         ed.commit();
 
                                     }
-                                    if((mail.equals(email))&&!(pass.equals(password)))
+                                    if((mail.equals(email))&&!(pass.equals(password))){
                                         uPassword.getEditText().setError("Invalid password");
+                                        progressBar.setVisibility(View.GONE);
+                                        btnLogIn.setVisibility(View.VISIBLE);
+                                        register.setVisibility(View.VISIBLE);
+                                        frogotPass.setVisibility(View.VISIBLE);
+                                    }
+
 
                                     if(!(mail.equals(email))&&!(pass.equals(password)))
                                     {
                                         uEmail.getEditText().setError("User Not found");
                                         uPassword.getEditText().setError("Password Unmatched");
+                                        progressBar.setVisibility(View.GONE);
+                                        btnLogIn.setVisibility(View.VISIBLE);
+                                        register.setVisibility(View.VISIBLE);
+                                        frogotPass.setVisibility(View.VISIBLE);
                                     }
 
                                 }
@@ -122,6 +146,8 @@ public class LogIn extends AppCompatActivity {
                             }
                         });
 
+
+
                 /*Toast.makeText(LogIn.this, email[0], Toast.LENGTH_SHORT).show();
                 Toast.makeText(LogIn.this, password[0], Toast.LENGTH_SHORT).show();*/
 
@@ -133,8 +159,20 @@ public class LogIn extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
+                btnLogIn.setVisibility(View.INVISIBLE);
+                register.setVisibility(View.INVISIBLE);
+                frogotPass.setVisibility(View.INVISIBLE);
+
+
                 Intent intent  = new Intent(getApplicationContext(), signUp.class);
                 startActivity(intent);
+
+
+                progressBar.setVisibility(View.GONE);
+                btnLogIn.setVisibility(View.VISIBLE);
+                register.setVisibility(View.VISIBLE);
+                frogotPass.setVisibility(View.VISIBLE);
             }
         });
 

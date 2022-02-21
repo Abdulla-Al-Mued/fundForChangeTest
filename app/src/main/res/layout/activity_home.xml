@@ -10,12 +10,12 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="63dp"
             android:id="@+id/search_img"
-            android:layout_height="match_parent"
+            android:layout_width="63dp"
+            android:layout_height="50dp"
             android:padding="5dp"
             android:src="@drawable/sch" />
 
@@ -42,8 +42,17 @@
         </de.hdodenhof.circleimageview.CircleImageView>
 
 
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="80dp"
+            android:id="@+id/progressBar_home"
+            android:layout_below="@+id/search_box"
+            android:layout_centerInParent="true"
+            />
 
     </RelativeLayout>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

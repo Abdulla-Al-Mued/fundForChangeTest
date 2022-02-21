@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.example.fundforchangetest.Models.Model;
 import com.example.fundforchangetest.R;
@@ -41,7 +42,8 @@ public class home extends AppCompatActivity {
     commonRecyclerAdapter adapter;
     private CircleImageView profileBtn;
     //private static int SPLASH_TIME= 1;
-    private static final String TAG = "FirestoreSearchActivity";
+    //private static final String TAG = "FirestoreSearchActivity";
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,9 @@ public class home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         EditText searchBox = findViewById(R.id.search_box);
+        progressBar = findViewById(R.id.progressBar_home);
+
+
         searchBox.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -139,6 +144,7 @@ public class home extends AppCompatActivity {
 
     public void showItems(){
 
+
         db.collection("event").whereEqualTo("status","accepted")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -153,6 +159,7 @@ public class home extends AppCompatActivity {
                             datalist.add(obj);
 
                         }
+                        progressBar.setVisibility(View.GONE);
                         adapter.notifyDataSetChanged();
                     }
                 });

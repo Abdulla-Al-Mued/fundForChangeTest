@@ -23,11 +23,13 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -68,6 +70,10 @@ public class signUp extends AppCompatActivity {
                 if (!validateEmail() | !validateFullname() | !validatePhone() | !validatePassword() |
                         !validateConfirmPassword() | !validateUsername())
                     return;
+
+
+
+
 
                 progressBar.setVisibility(View.VISIBLE);
                 register.setVisibility(View.INVISIBLE);
@@ -117,6 +123,7 @@ public class signUp extends AppCompatActivity {
                         }
                 );
 
+
                 /*Intent intent = new Intent(getApplicationContext(), UserMainActivity.class);
                 startActivity(intent);*/
 
@@ -131,7 +138,7 @@ public class signUp extends AppCompatActivity {
                     items.put("name",txt1.getEditText().getText().toString().trim());
                     items.put("user",txt2.getEditText().getText().toString().trim());
                     items.put("email",txt3.getEditText().getText().toString().trim());
-                    items.put("phone",txt4.getEditText().getText().toString().trim());
+                    items.put("phone","+8801"+txt4.getEditText().getText().toString().trim());
                     items.put("password",txt5.getEditText().getText().toString().trim());
                     items.put("role","user");
 
@@ -232,10 +239,15 @@ public class signUp extends AppCompatActivity {
     private boolean validatePhone() {
 
         String t1;
-        String checkPhone = "^01[0-9][9]";
+        //String checkPhone = "^01[0-9][9]";
+        checkPhoneExist();
+        SharedPreferences sp = getSharedPreferences("datafile2",MODE_PRIVATE);
+        SharedPreferences.Editor ed = sp.edit();
+
+        SharedPreferences sp1 = getSharedPreferences("datafile3",MODE_PRIVATE);
+        SharedPreferences.Editor ed1 = sp1.edit();
 
         t1 = txt4.getEditText().getText().toString().trim();
-        checkPhoneExist();
 
         if (t1.isEmpty()) {
 
@@ -245,7 +257,34 @@ public class signUp extends AppCompatActivity {
         } else if (t1.length() != 9) {
             txt4.getEditText().setError("Invalid Number");
             return false;
-        } else {
+        }
+        else if(sp.contains("Exist1") && sp1.contains("Exist2")){
+
+            txt4.getEditText().setError("Phone number already exist");
+            txt3.getEditText().setError("Email number already exist");
+            ed.remove("Exist1");
+            ed.commit();
+            ed1.remove("Exist2");
+            ed1.commit();
+            return false;
+        }
+        else if(sp.contains("Exist1")){
+
+            txt3.getEditText().setError("Email number already exist");
+            ed.remove("Exist1");
+            ed.commit();
+            return false;
+
+        }
+        else if(sp1.contains("Exist2")){
+
+            txt4.getEditText().setError("Phone number already exist");
+            ed1.remove("Exist2");
+            ed1.commit();
+            return false;
+
+        }
+        else {
             txt4.getEditText().setError(null);
             txt4.setErrorEnabled(false);
             return true;
@@ -308,35 +347,60 @@ public class signUp extends AppCompatActivity {
 
     public void checkPhoneExist() {
 
-        db.collection("user").get()
+
+        db.collection("users").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
-                        for(QueryDocumentSnapshot qs : queryDocumentSnapshots){
+                        List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+
+                        for(DocumentSnapshot qs : list){
 
                             String phone, email;
                             phone = qs.getString("phone");
                             email = qs.getString("email");
 
-                            String number = txt4.getEditText().getText().toString().trim();
+                            String number = "+8801"+txt4.getEditText().getText().toString().trim();
                             String mail = txt3.getEditText().getText().toString().trim();
 
-                            if(mail.equals(email)&&(number.equals(phone))){
-                                txt4.getEditText().setError("Phone Number Already Taken");
-                                txt3.getEditText().setError("Email Already Taken");
+                            SharedPreferences sp = getSharedPreferences("datafile2",MODE_PRIVATE);
+                            SharedPreferences.Editor ed = sp.edit();
 
-                                return;
+                            SharedPreferences sp1 = getSharedPreferences("datafile3",MODE_PRIVATE);
+                            SharedPreferences.Editor ed1 = sp1.edit();
+
+                            if(mail.equals(email)&&(number.equals(phone))){
+                                ed1.putString("Exist2","p");
+                                ed1.commit();
+                                ed.putString("Exist1","e");
+                                ed.commit();
+
+
+                                break;
+
 
                             }
-                            if((mail.equals(email))&&!(number.equals(phone)))
-                                txt3.getEditText().setError("Email Already Taken");
-                            return;
+                            else if((mail.equals(email))&&!(number.equals(phone))){
+
+                                ed.putString("Exist1","e");
+                                ed.commit();
+
+                                break;
+                            }
+                            else if(number.equals(phone)){
+                                ed1.putString("Exist2","p");
+                                ed1.commit();
+                                break;
+                            }
+
 
                         }
 
                     }
                 });
+
+
     }
 
 

@@ -2,6 +2,10 @@ package com.example.fundforchangetest.activities.user.event;
 
 
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
+
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -16,11 +20,11 @@ import java.util.Map;
 public class addEvent {
 
     FirebaseFirestore dbroot = FirebaseFirestore.getInstance();
-    String  en, edesc, el, email, pn, nid;
+    String  en, edesc, el, email, pn, nid, uMail;
     TextInputLayout txt,txt2,txt3,txt4,txt5,txt6, txt7;
     int edGoal;
 
-    public addEvent(String en, String edesc, String el, int edGoal, String email, String pn, String nid, TextInputLayout txt, TextInputLayout txt2, TextInputLayout txt3, TextInputLayout txt4, TextInputLayout txt5, TextInputLayout txt6, TextInputLayout txt7) {
+    public addEvent(String en, String edesc, String el, int edGoal, String email, String pn, String nid, TextInputLayout txt, TextInputLayout txt2, TextInputLayout txt3, TextInputLayout txt4, TextInputLayout txt5, TextInputLayout txt6, TextInputLayout txt7, String uMail) {
         this.en = en;
         this.edesc = edesc;
         this.el = el;
@@ -35,6 +39,7 @@ public class addEvent {
         this.txt6 = txt6;
         this.txt7 = txt7;
         this.edGoal = edGoal;
+        this.uMail = uMail;
     }
 
 
@@ -52,6 +57,7 @@ public class addEvent {
     public void insert(){
 
 
+
             Map<String, Object> items = new HashMap<>();
 
 
@@ -63,6 +69,7 @@ public class addEvent {
             items.put("phone",pn);
             items.put("NID",nid);
             items.put("status","pending");
+            items.put("uEmail",uMail);
 
 
             dbroot.collection("event").add(items)
@@ -78,7 +85,6 @@ public class addEvent {
 
 
     }
-
 
 
 

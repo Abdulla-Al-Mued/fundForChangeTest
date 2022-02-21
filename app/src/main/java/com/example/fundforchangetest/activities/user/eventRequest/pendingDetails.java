@@ -15,11 +15,15 @@ import com.example.fundforchangetest.R;
 import com.example.fundforchangetest.activities.user.UserMainActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.List;
 
 public class pendingDetails extends AppCompatActivity {
 
-    TextView t1,t2,t3, t4, t5, t6, t7;
+    TextView t1,t2,t3, t4, t5, t6, t7, u1, u2, u3, u4, role;
     Button acBtn,rejBtn;
     pendingModel ob;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -38,6 +42,12 @@ public class pendingDetails extends AppCompatActivity {
         t6 = (TextView) findViewById(R.id.event_phone);
         t7 = (TextView) findViewById(R.id.event_nid);
 
+        u1 = findViewById(R.id.userNameHead);
+        u2 = findViewById(R.id.user_name);
+        u3 = findViewById(R.id.user_email);
+        u4 = findViewById(R.id.user_phone);
+        role = findViewById(R.id.role);
+
 
         acBtn = findViewById(R.id.accept_btn);
         rejBtn = findViewById(R.id.reject_btn);
@@ -53,7 +63,12 @@ public class pendingDetails extends AppCompatActivity {
         t6.setText(ob.getPhone());
         t7.setText(ob.getNID());
 
+        // set user information
 
+        setUserAttribute();
+
+
+        // end
         acBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,6 +83,31 @@ public class pendingDetails extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    private void setUserAttribute() {
+
+        db.collection("users").whereEqualTo("email",ob.getuEmail())
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+
+                        for(DocumentSnapshot d : list){
+
+                            u1.setText(d.getString("name"));
+                            u2.setText(d.getString("name"));
+                            u3.setText(d.getString("email"));
+                            u4.setText(d.getString("phone"));
+                            role.setText(d.getString("role"));
+
+                        }
+
+
+                    }
+                });
 
     }
 

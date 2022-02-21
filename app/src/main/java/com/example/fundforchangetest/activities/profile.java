@@ -11,11 +11,19 @@ import android.widget.TextView;
 
 import com.example.fundforchangetest.R;
 import com.example.fundforchangetest.activities.user.UserMainActivity;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.List;
 
 public class profile extends AppCompatActivity {
-    TextView email, pass;
+    TextView email, name, Name, phone, role;
     Button logOut;
+    String mail;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +31,20 @@ public class profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         email = findViewById(R.id.email);
-        pass = findViewById(R.id.uid);
         logOut = findViewById(R.id.logout);
+        name = findViewById(R.id.name);
+        Name = findViewById(R.id.NAME);
+        phone = findViewById(R.id.phone);
+        role = findViewById(R.id.role);
+
+
 
 
         SharedPreferences sp = getSharedPreferences("datafile",MODE_PRIVATE);
-        email.setText(sp.getString("email",""));
+        mail = sp.getString("email","");
+        email.setText(mail);
+
+        setProfileDetails();
 
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,12 +54,41 @@ public class profile extends AppCompatActivity {
                     ed.remove("email");
                     ed.commit();
 
-            Intent intent  = new Intent(getApplicationContext(), home.class);
-            startActivity(intent);
+                    Intent intent  = new Intent(getApplicationContext(), home.class);
+                    startActivity(intent);
                 }
 
             }
         });
+
+
+    }
+
+    private void setProfileDetails() {
+
+        SharedPreferences sp = getSharedPreferences("datafile",MODE_PRIVATE);
+
+        db.collection("users").whereEqualTo("email", sp.getString("email",""))
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+
+                        List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+
+                        for(DocumentSnapshot d : list){
+
+                            Name.setText(d.getString("name"));
+                            name.setText(d.getString("name"));
+                            phone.setText(d.getString("phone"));
+                            role.setText(d.getString("role"));
+
+                        }
+
+
+                    }
+                });
 
 
     }

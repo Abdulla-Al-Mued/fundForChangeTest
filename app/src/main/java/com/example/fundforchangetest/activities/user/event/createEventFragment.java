@@ -1,6 +1,10 @@
 package com.example.fundforchangetest.activities.user.event;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -95,6 +99,9 @@ public class createEventFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
 
+        SharedPreferences sp = this.getActivity().getSharedPreferences("datafile", Context.MODE_PRIVATE);
+        String uMail = sp.getString("email","");
+
         TextInputLayout txt = (TextInputLayout) view.findViewById(R.id.event_Name);
         TextInputLayout txt2 = (TextInputLayout) view.findViewById(R.id.eventDescriptionField);
         TextInputLayout txt3 = (TextInputLayout) view.findViewById(R.id.eventLocation);
@@ -102,6 +109,7 @@ public class createEventFragment extends Fragment {
         TextInputLayout txt5 = (TextInputLayout) view.findViewById(R.id.createEventemailField);
         TextInputLayout txt6 = (TextInputLayout) view.findViewById(R.id.createEventPhoneNumber);
         TextInputLayout txt7 = (TextInputLayout) view.findViewById(R.id.createEventNid);
+
 
         String checkEmail = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
@@ -154,7 +162,7 @@ public class createEventFragment extends Fragment {
 
                 }*/
 
-                ob = new addEvent(t1,t2,t3,t8,t5,t5,t7,txt,txt2,txt3,txt4,txt5,txt6,txt7);
+                ob = new addEvent(t1,t2,t3,t8,t5,t5,t7,txt,txt2,txt3,txt4,txt5,txt6,txt7,uMail);
 
                 ob.insert();
                 txt.getEditText().setText("");
@@ -185,42 +193,13 @@ public class createEventFragment extends Fragment {
 
         //insertdata();
 
+
         return view;
     }
 
 
     public void insertdata(){
 
-        Map<String, String> items = new HashMap<>();
-
-
-        /*items.put("name",t1.getText().toString().trim());
-        items.put("description",t2.getText().toString().trim());
-        items.put("location",t3.getText().toString().trim());
-        items.put("donation goal",t4.getText().toString().trim());
-        items.put("email",t5.getText().toString().trim());
-        items.put("phone",t6.getText().toString().trim());
-        items.put("NID",t7.getText().toString().trim());
-        items.put("status","pending");
-
-
-        dbroot.collection("event").add(items)
-                .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentReference> task) {
-                        //Toast.makeText(getContext(), "Created Successfully", Toast.LENGTH_SHORT).show();
-                        t1.setText("");
-                        t2.setText("");
-                        t3.setText("");
-                        t4.setText("");
-                        t5.setText("");
-                        t6.setText("");
-                        t7.setText("");
-
-                        Toast.makeText(getContext(), "Created Successfully", Toast.LENGTH_SHORT).show();
-                    }
-                });*/
 
     }
 }
