@@ -6,6 +6,7 @@
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/drawable/ic_baseline_event_24.xml" value="0.1" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1" />
+        <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/drawable/round_shape.xml" value="0.1" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/drawable/shape.xml" value="0.1" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/drawable/shape2.xml" value="0.103" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_details.xml" value="0.1" />
@@ -14,7 +15,7 @@
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_otp_verification.xml" value="0.25" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_pending_details.xml" value="0.209375" />
-        <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_profile.xml" value="0.209375" />
+        <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_profile.xml" value="0.25" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_user_main.xml" value="0.22" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/fragment_create_event.xml" value="0.22" />
