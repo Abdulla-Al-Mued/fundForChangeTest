@@ -124,9 +124,6 @@ public class signUp extends AppCompatActivity {
                 );
 
 
-                /*Intent intent = new Intent(getApplicationContext(), UserMainActivity.class);
-                startActivity(intent);*/
-
                 SharedPreferences sp = getSharedPreferences("datafile",MODE_PRIVATE);
                 SharedPreferences.Editor ed = sp.edit();
 
@@ -239,7 +236,7 @@ public class signUp extends AppCompatActivity {
     private boolean validatePhone() {
 
         String t1;
-        //String checkPhone = "^01[0-9][9]";
+
         checkPhoneExist();
         SharedPreferences sp = getSharedPreferences("datafile2",MODE_PRIVATE);
         SharedPreferences.Editor ed = sp.edit();
@@ -344,6 +341,7 @@ public class signUp extends AppCompatActivity {
             return true;
         }
     }
+
 
     public void checkPhoneExist() {
 

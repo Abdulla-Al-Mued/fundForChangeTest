@@ -21,23 +21,16 @@ public class addEvent {
 
     FirebaseFirestore dbroot = FirebaseFirestore.getInstance();
     String  en, edesc, el, email, pn, nid, uMail;
-    TextInputLayout txt,txt2,txt3,txt4,txt5,txt6, txt7;
+
     int edGoal;
 
-    public addEvent(String en, String edesc, String el, int edGoal, String email, String pn, String nid, TextInputLayout txt, TextInputLayout txt2, TextInputLayout txt3, TextInputLayout txt4, TextInputLayout txt5, TextInputLayout txt6, TextInputLayout txt7, String uMail) {
+    public addEvent(String en, String edesc, String el, int edGoal, String email, String pn, String nid, String uMail) {
         this.en = en;
         this.edesc = edesc;
         this.el = el;
         this.email = email;
         this.pn = pn;
         this.nid = nid;
-        this.txt = txt;
-        this.txt2 = txt2;
-        this.txt3 = txt3;
-        this.txt4 = txt4;
-        this.txt5 = txt5;
-        this.txt6 = txt6;
-        this.txt7 = txt7;
         this.edGoal = edGoal;
         this.uMail = uMail;
     }

@@ -95,9 +95,12 @@ public class LogIn extends AppCompatActivity {
                                 for(QueryDocumentSnapshot q: queryDocumentSnapshots){
 
 
-                                    String mail ,pass;
+                                    String mail ,pass, role;
+
                                     mail = q.getString("email");
                                     pass = q.getString("password");
+                                    role = q.getString("role");
+
                                     String email = uEmail.getEditText().getText().toString();
                                     String password = uPassword.getEditText().getText().toString();
 
@@ -113,6 +116,11 @@ public class LogIn extends AppCompatActivity {
                                         SharedPreferences.Editor ed = sp.edit();
                                         ed.putString("email",uEmail.getEditText().getText().toString().trim());
                                         ed.commit();
+
+                                        SharedPreferences sp3 = getSharedPreferences("datafile3",MODE_PRIVATE);
+                                        SharedPreferences.Editor ed3 = sp3.edit();
+                                        ed3.putString("role",role);
+                                        ed3.commit();
 
                                     }
                                     if((mail.equals(email))&&!(pass.equals(password))){

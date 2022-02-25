@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -53,6 +54,14 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
 
         //hide or show item
         Menu menu = navigationview.getMenu();
+        SharedPreferences sp3 = getSharedPreferences("datafile3",MODE_PRIVATE);
+        SharedPreferences.Editor ed3 = sp3.edit();
+        String role = sp3.getString("role","");
+
+        if(role.equals("user")){
+            menu.findItem(R.id.nav_myevents).setVisible(false);
+        }
+
         //menu.findItem(R.id.nav_login).setVisible(false);
 
         navigationview.setNavigationItemSelectedListener(this);

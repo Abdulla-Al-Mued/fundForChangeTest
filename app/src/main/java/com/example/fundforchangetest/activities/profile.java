@@ -44,6 +44,12 @@ public class profile extends AppCompatActivity {
         mail = sp.getString("email","");
         email.setText(mail);
 
+
+        SharedPreferences sp3 = getSharedPreferences("datafile3",MODE_PRIVATE);
+
+
+
+
         setProfileDetails();
 
         logOut.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +59,10 @@ public class profile extends AppCompatActivity {
                     SharedPreferences.Editor ed = sp.edit();
                     ed.remove("email");
                     ed.commit();
+
+                    SharedPreferences.Editor ed3 = sp3.edit();
+                    ed3.remove("role");
+                    ed3.commit();
 
                     Intent intent  = new Intent(getApplicationContext(), home.class);
                     startActivity(intent);

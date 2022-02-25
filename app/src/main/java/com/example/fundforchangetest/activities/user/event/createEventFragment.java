@@ -11,24 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.fundforchangetest.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class createEventFragment extends Fragment {
@@ -128,41 +118,41 @@ public class createEventFragment extends Fragment {
                 t5 = txt5.getEditText().getText().toString().trim();
                 t6 = txt6.getEditText().getText().toString().trim();
                 t7 = txt7.getEditText().getText().toString().trim();
+
+
+                if(t1.isEmpty()){
+                    txt.getEditText().setError("field cannot be empty");
+                    return;
+                }
+                if(t2.isEmpty()){
+                    txt2.getEditText().setError("field cannot  be empty");
+                }
+                if(t3.isEmpty()){
+                    txt3.getEditText().setError("field cannot  be empty");
+                    return;
+                }
+                if(t4.isEmpty()){
+                    txt4.getEditText().setError("Field Cannot Be empty");
+                    return;
+                }
+                if(t5.isEmpty()){
+                    txt5.getEditText().setError("field cannot  be empty");
+                    return;
+                }
+                if(t6.isEmpty()){
+                    txt6.getEditText().setError("field cannot  be empty");
+                    return;
+                }
+                if(t7.isEmpty()){
+                    txt7.getEditText().setError("field cannot  be empty");
+                    return;
+                }
+
+
+
                 t8 = Integer.parseInt(t4);
 
-
-                /*if(t1.isEmpty()){
-                    txt.getEditText().setError("Field Cannot Be empty");
-                }
-                else if(t2.isEmpty()){
-                    txt2.getEditText().setError("Field Cannot Be empty");
-                }
-                else if(t3.isEmpty()){
-                    txt3.getEditText().setError("Field Cannot Be empty");
-                }
-                else if(t4.isEmpty()){
-                    txt4.getEditText().setError("Field Cannot Be empty");
-                }
-                else if(t5.isEmpty() || t5.matches(checkEmail)){
-                    if(t5.isEmpty())
-                        txt5.getEditText().setError("Field Cannot Be empty");
-                    else
-                        txt5.getEditText().setError("Enter a Valid email");
-                }
-                else if(t6.isEmpty() || t6.length()!=11){
-                    if(t6.isEmpty())
-                        txt6.getEditText().setError("Field Cannot Be empty");
-                    else
-                        txt6.getEditText().setError("Invalid number");
-                }
-                else if(t7.isEmpty()){
-                    txt7.getEditText().setError("Field Cannot Be empty");
-                }
-                else{
-
-                }*/
-
-                ob = new addEvent(t1,t2,t3,t8,t5,t5,t7,txt,txt2,txt3,txt4,txt5,txt6,txt7,uMail);
+                ob = new addEvent(t1,t2,t3,t8,t5,t5,t7,uMail);
 
                 ob.insert();
                 txt.getEditText().setText("");

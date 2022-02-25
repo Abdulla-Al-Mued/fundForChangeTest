@@ -182,6 +182,11 @@ public class otpVerification extends AppCompatActivity {
         SharedPreferences.Editor ed = sp.edit();
         ed.putString("email",getIntent().getStringExtra("email"));
         ed.commit();
+
+        SharedPreferences sp3 = getSharedPreferences("datafile3",MODE_PRIVATE);
+        SharedPreferences.Editor ed3 = sp3.edit();
+        ed3.putString("role","user");
+        ed3.commit();
     }
 
     private void moveTxtField() {
