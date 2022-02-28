@@ -115,33 +115,6 @@ public class home extends AppCompatActivity {
                 }
 
 
-                /*new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        SharedPreferences sharedPreferences = getSharedPreferences(LogIn.PREFS_NAME,0);
-                        boolean haslogin = sharedPreferences.getBoolean("hasLogedIn",false);
-
-                        if (haslogin) {
-
-                            Toast.makeText(getApplicationContext(), "Already log in", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(home.this , UserMainActivity.class);
-                            startActivity(intent);
-                            finish();
-
-                        } else {
-                            Intent intent = new Intent(home.this , LogIn.class);
-                            startActivity(intent);
-                            finish();
-
-                        }
-
-                    }
-                },SPLASH_TIME);*/
-
-
-
-
-
             }
         });
 
