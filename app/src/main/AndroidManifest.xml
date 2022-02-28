@@ -33,6 +33,8 @@
         <activity
             android:name=".activities.home"
             android:exported="false" />
+        <activity android:name=".activities.DonationActivity"
+            android:exported="false"/>
         <activity
             android:name=".activities.MainActivity"
             android:exported="true">

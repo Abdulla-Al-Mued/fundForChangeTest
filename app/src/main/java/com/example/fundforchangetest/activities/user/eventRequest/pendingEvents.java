@@ -71,7 +71,7 @@ public class pendingEvents extends Fragment {
         View view = inflater.inflate(R.layout.fragment_pending_events, container, false);
 
         recyclerView = view.findViewById(R.id.rec_view1);
-        Toast.makeText(getActivity(), "No problem", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "No problem", Toast.LENGTH_SHORT).show();
         pendingEventController ob = new pendingEventController(adapter,recyclerView,datalist,getContext());
         ob.showItems();
         return view;

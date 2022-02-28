@@ -142,6 +142,7 @@ public class LogIn extends AppCompatActivity {
                                         frogotPass.setVisibility(View.VISIBLE);
                                     }
 
+
                                 }
 
 

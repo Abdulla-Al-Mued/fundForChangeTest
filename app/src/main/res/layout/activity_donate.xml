@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".activities.DonationActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Donation Method"
+        android:textSize="17sp"/>
+
+
+    <RadioButton
+        android:id="@+id/bkash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/bkashlogo"
+        android:layout_marginBottom="10dp"/>
+
+    <RadioButton
+        android:id="@+id/nogod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/nogodlogo"
+        android:layout_marginBottom="10dp"/>
+
+    <RadioButton
+        android:id="@+id/rocket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/rocketlogo"
+        android:layout_marginBottom="10dp"/>
+
+    <RadioButton
+        android:id="@+id/visa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/visalogo"
+        android:layout_marginBottom="10dp"/>
+
+    <RadioButton
+        android:id="@+id/mastercard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/arevaimastercard"
+        android:layout_marginBottom="10dp"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Donation Amount"
+        android:textSize="17sp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/DonationAmount"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Amount"
+        android:textColorHint="#8F8383">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="numberDecimal"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/backfrmdonate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:backgroundTint="#831616"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"/>
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="1dp"
+            android:layout_weight="0.5"/>
+
+        <Button
+            android:id="@+id/continuedonate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Continue"
+            android:layout_weight="1"
+            android:layout_marginRight="10dp"/>
+    </LinearLayout>
+</LinearLayout>

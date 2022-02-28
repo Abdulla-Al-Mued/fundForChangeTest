@@ -22,9 +22,9 @@ public class addEvent {
     FirebaseFirestore dbroot = FirebaseFirestore.getInstance();
     String  en, edesc, el, email, pn, nid, uMail;
 
-    int edGoal;
+    int edGoal, donated;
 
-    public addEvent(String en, String edesc, String el, int edGoal, String email, String pn, String nid, String uMail) {
+    public addEvent(String en, String edesc, String el, int edGoal, int donated, String email, String pn, String nid, String uMail) {
         this.en = en;
         this.edesc = edesc;
         this.el = el;
@@ -32,6 +32,7 @@ public class addEvent {
         this.pn = pn;
         this.nid = nid;
         this.edGoal = edGoal;
+        this.donated = donated;
         this.uMail = uMail;
     }
 
@@ -58,6 +59,7 @@ public class addEvent {
             items.put("description",edesc);
             items.put("location",el);
             items.put("goal",edGoal);
+            items.put("donated", donated);
             items.put("email",email);
             items.put("phone",pn);
             items.put("NID",nid);

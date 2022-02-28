@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".activities.user.eventRequest.pendingDetails">
+    tools:context=".activities.detailsActivity">
 
 
     <ScrollView
@@ -16,119 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical"
-                android:padding="5dp">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    app:cardElevation="10dp">
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#FFFFFF"
-                        android:orientation="vertical"
-                        android:padding="5dp">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#FFFFFF">
-
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:id="@+id/profilePicChange"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_alignParentLeft="true"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:src="@drawable/user"
-                                app:civ_border_color="@color/teal_700"
-                                app:civ_border_width="1dp">
-
-
-                            </de.hdodenhof.circleimageview.CircleImageView>
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="80dp"
-                                android:layout_marginTop="25dp"
-                                android:text="Abdulla Al Mued"
-                                android:textColor="@color/black"
-                                android:textSize="20sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="80dp"
-                                android:layout_marginTop="45dp"
-                                android:text="user"
-                                android:textColor="@color/black" />
-
-
-                        </RelativeLayout>
-
-
-                        <View
-                            android:id="@+id/view2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="1dp"
-                            android:background="#97DFDB" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:layout_marginTop="10dp"
-                            android:drawableLeft="@drawable/ic_user"
-                            android:drawablePadding="10dp"
-                            android:padding="10dp"
-                            android:text="Al Mued"
-                            android:id="@+id/user_name"
-                            android:textColor="@color/black" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:drawableLeft="@drawable/ic_email"
-                            android:drawablePadding="10dp"
-                            android:padding="10dp"
-                            android:id="@+id/user_email"
-                            android:text="abdullaalmuid101@gmail.com"
-                            android:textColor="@color/black" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:drawableLeft="@drawable/ic_phone"
-                            android:drawablePadding="10dp"
-                            android:padding="10dp"
-                            android:text="01831553096"
-                            android:textColor="@color/black"
-                            android:id="@+id/user_phone"/>
-
-                    </LinearLayout>
-
-
-                </com.google.android.material.card.MaterialCardView>
-
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -270,6 +157,25 @@
                             android:layout_marginLeft="30dp"
                             android:drawablePadding="10dp"
                             android:padding="10dp"
+                            android:text="Total Donation"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:textColor="@color/black" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:drawablePadding="10dp"
+                            android:padding="10dp"
+                            android:text="Donated"
+                            android:id="@+id/total_donation"
+                            android:textColor="@color/black" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:drawablePadding="10dp"
+                            android:padding="10dp"
                             android:text="Email"
                             android:textStyle="bold"
                             android:textSize="17sp"
@@ -395,9 +301,9 @@
                                 android:layout_width="150dp"
                                 android:layout_height="40dp"
                                 android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
                                 android:layout_marginTop="15dp"
                                 android:background="@color/black"
-                                android:layout_centerVertical="true"
                                 android:elevation="0dp"
                                 android:text="Donate"
                                 android:textSize="14sp"

@@ -8,14 +8,15 @@ public class Model implements Serializable {
 
     @Exclude public String id;
     String name, description,location, email,phone, NID;
-    int goal;
+    int goal, donated;
 
 
-    public Model(String name, String description, String location, int goal, String email, String phone, String NID) {
+    public Model(String name, String description, String location, int goal, int donated, String email, String phone, String NID) {
         this.name = name;
         this.description = description;
         this.location = location;
         this.goal = goal;
+        this.donated = donated;
         this.email = email;
         this.phone = phone;
         this.NID = NID;
@@ -73,6 +74,9 @@ public class Model implements Serializable {
     public void setGoal(int goal) {
         this.goal = goal;
     }
+
+    public  int getDonated() {return donated;}
+    public void setDonated(int donated) {this.donated = donated;}
 
     public String getPhone() {
         return phone;

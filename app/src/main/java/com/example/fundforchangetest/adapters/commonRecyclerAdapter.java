@@ -23,10 +23,12 @@ public class commonRecyclerAdapter extends RecyclerView.Adapter<commonRecyclerAd
 
     List<Model> datalist;
     private Context mCtx;
+    private List<String> IDs;
 
     public commonRecyclerAdapter(Context mCtx, List<Model> datalist) {
         this.datalist = datalist;
         this.mCtx = mCtx;
+
     }
 
     @NonNull
@@ -43,6 +45,7 @@ public class commonRecyclerAdapter extends RecyclerView.Adapter<commonRecyclerAd
         holder.t1.setText(datalist.get(position).getName());
         holder.t2.setText(datalist.get(position).getDescription());
         holder.goalprogress.setMax(datalist.get(position).getGoal());
+        holder.goalprogress.setProgress(datalist.get(position).getDonated());
         /*holder.cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
