@@ -34,19 +34,6 @@
         android:drawableRight="@drawable/rocketlogo"
         android:layout_marginBottom="10dp"/>
 
-    <RadioButton
-        android:id="@+id/visa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableRight="@drawable/visalogo"
-        android:layout_marginBottom="10dp"/>
-
-    <RadioButton
-        android:id="@+id/mastercard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableRight="@drawable/arevaimastercard"
-        android:layout_marginBottom="10dp"/>
 
 
     <TextView
