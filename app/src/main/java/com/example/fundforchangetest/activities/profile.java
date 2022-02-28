@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.fundforchangetest.R;
@@ -21,8 +22,8 @@ import java.util.List;
 
 public class profile extends AppCompatActivity {
     TextView email, name, Name, phone, role;
-    Button logOut;
-    String mail;
+    Button logOut, back;
+    ImageButton edit;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
@@ -36,13 +37,17 @@ public class profile extends AppCompatActivity {
         Name = findViewById(R.id.NAME);
         phone = findViewById(R.id.phone);
         role = findViewById(R.id.role);
+        edit = findViewById(R.id.editProfile);
+        back = findViewById(R.id.back);
+
+
+
 
 
 
 
         SharedPreferences sp = getSharedPreferences("datafile",MODE_PRIVATE);
-        mail = sp.getString("email","");
-        email.setText(mail);
+
 
 
         SharedPreferences sp3 = getSharedPreferences("datafile3",MODE_PRIVATE);
@@ -51,6 +56,23 @@ public class profile extends AppCompatActivity {
 
 
         setProfileDetails();
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), updateProfile.class);
+                startActivity(intent);
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), UserMainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +113,7 @@ public class profile extends AppCompatActivity {
 
                             Name.setText(d.getString("name"));
                             name.setText(d.getString("name"));
+                            email.setText(d.getString("email"));
                             phone.setText(d.getString("phone"));
                             role.setText(d.getString("role"));
 

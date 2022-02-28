@@ -1,11 +1,14 @@
 package com.example.fundforchangetest.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AlertDialogLayout;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -52,6 +55,7 @@ public class home extends AppCompatActivity {
 
         EditText searchBox = findViewById(R.id.search_box);
         progressBar = findViewById(R.id.progressBar_home);
+        profileBtn = findViewById(R.id.profileBtn);
 
 
         searchBox.addTextChangedListener(new TextWatcher() {
@@ -70,6 +74,7 @@ public class home extends AppCompatActivity {
 
                 //Log.d(TAG, "SearchBox has change to : "+ s.toString());
                 processSearch(s.toString().toLowerCase().trim());
+                //profileBtn.setVisibility(View.INVISIBLE);
 
             }
         });
@@ -89,7 +94,7 @@ public class home extends AppCompatActivity {
 
 
 
-        profileBtn = findViewById(R.id.profileBtn);
+
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -139,6 +144,26 @@ public class home extends AppCompatActivity {
 
             }
         });
+
+
+
+    }
+
+    @Override
+    public void onBackPressed(){
+
+        new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to exit")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finishAffinity();
+                        //System.exit(0);
+                    }
+                })
+                .setNegativeButton("No",null)
+                .show();
 
     }
 
