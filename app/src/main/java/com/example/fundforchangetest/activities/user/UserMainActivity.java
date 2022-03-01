@@ -7,30 +7,32 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-
+import android.widget.TextView;
 import com.example.fundforchangetest.R;
 import com.example.fundforchangetest.activities.home;
 import com.example.fundforchangetest.activities.profile;
 import com.example.fundforchangetest.activities.user.event.createEventFragment;
 import com.example.fundforchangetest.activities.user.eventRequest.pendingEvents;
-import com.example.fundforchangetest.activities.user.home.homeFragment;
-import com.example.fundforchangetest.activities.user.myEvents.myEvent;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+import java.util.List;
 
 public class UserMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     DrawerLayout drawerLayout;
     NavigationView navigationview;
     Toolbar toolbar;
+    TextView name;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,11 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationview = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
+        //name = findViewById(R.id.profile_name);
 
+        View header = navigationview.getHeaderView(0);
+        name = (TextView) header.findViewById(R.id.profile_name);
+        setHeader();
 
 
         setSupportActionBar(toolbar);
@@ -67,9 +73,28 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
         navigationview.setNavigationItemSelectedListener(this);
 
         //checked item
-        navigationview.setCheckedItem(R.id.nav_home);
+        navigationview.setCheckedItem(R.id.nav_create_event);
         //default fragment
-        getSupportFragmentManager().beginTransaction().replace(R.id.container,new homeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container,new createEventFragment()).addToBackStack(null).commit();
+    }
+
+    private void setHeader() {
+
+        SharedPreferences sp = getSharedPreferences("datafile",MODE_PRIVATE);
+
+        db.collection("users")
+                .whereEqualTo("email",sp.getString("email",""))
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+
+                        for(DocumentSnapshot d : list){
+                            name.setText(d.getString("name"));
+                        }
+                    }
+                });
     }
 
     public void onBackPressed(){
@@ -98,13 +123,6 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
 
         //Fragment temp = null;
         switch (item.getItemId()){
-            case R.id.nav_home:
-                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.container, new homeFragment());
-                ft.addToBackStack("tag_back");
-                ft.commit();
-                //temp = new Home();
-                break;
             case (R.id.nav_myevents):
                 FragmentTransaction ft1 = getSupportFragmentManager().beginTransaction();
                 ft1.replace(R.id.container, new pendingEvents());
