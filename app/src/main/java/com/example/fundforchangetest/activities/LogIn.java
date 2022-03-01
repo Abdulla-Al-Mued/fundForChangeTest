@@ -107,6 +107,11 @@ public class LogIn extends AppCompatActivity {
 
                                     if(mail.equals(email)&&(pass.equals(password))){
 
+                                        uEmail.getEditText().setError(null);
+                                        uEmail.setErrorEnabled(false);
+                                        uPassword.getEditText().setError(null);
+                                        uPassword.setErrorEnabled(false);
+
                                         Toast.makeText(LogIn.this, "Log In Success", Toast.LENGTH_SHORT).show();
 
                                         Intent intent  = new Intent(getApplicationContext(), UserMainActivity.class);
@@ -121,9 +126,10 @@ public class LogIn extends AppCompatActivity {
                                         SharedPreferences.Editor ed3 = sp3.edit();
                                         ed3.putString("role",role);
                                         ed3.commit();
+                                        break;
 
                                     }
-                                    if((mail.equals(email))&&!(pass.equals(password))){
+                                    else if((mail.equals(email))&&!(pass.equals(password))){
                                         uPassword.getEditText().setError("Invalid password");
                                         progressBar.setVisibility(View.GONE);
                                         btnLogIn.setVisibility(View.VISIBLE);
@@ -132,7 +138,7 @@ public class LogIn extends AppCompatActivity {
                                     }
 
 
-                                    if(!(mail.equals(email))&&!(pass.equals(password)))
+                                    else if(!(mail.equals(email))&&!(pass.equals(password)))
                                     {
                                         uEmail.getEditText().setError("User Not found");
                                         uPassword.getEditText().setError("Password Unmatched");
