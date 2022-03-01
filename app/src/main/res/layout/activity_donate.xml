@@ -3,88 +3,189 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".activities.DonationActivity">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Donation Method"
-        android:textSize="17sp"/>
-
-
-    <RadioButton
-        android:id="@+id/bkash"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableRight="@drawable/bkashlogo"
-        android:layout_marginBottom="10dp"/>
-
-    <RadioButton
-        android:id="@+id/nogod"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableRight="@drawable/nogodlogo"
-        android:layout_marginBottom="10dp"/>
-
-    <RadioButton
-        android:id="@+id/rocket"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableRight="@drawable/rocketlogo"
-        android:layout_marginBottom="10dp"/>
-
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Donation Amount"
-        android:textSize="17sp"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/DonationAmount"
-
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter Amount"
-        android:textColorHint="#8F8383">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="numberDecimal"
-            android:textColor="#000"
-            android:textSize="14sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp">
 
-        <Button
-            android:id="@+id/backfrmdonate"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Donator Info"
+            android:textSize="17sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/DonatorName"
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Your Name"
+            android:textColorHint="#8F8383">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPersonName"
+                android:textColor="#000"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/DonatorPhone"
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:textColorHint="#8F8383">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="numberDecimal"
+                android:textColor="#000"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/DonatorEmail"
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Your Email"
+            android:textColorHint="#8F8383">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textEmailAddress"
+                android:textColor="#000"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Back"
-            android:backgroundTint="#831616"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp"/>
-
-        <View
-            android:layout_width="5dp"
-            android:layout_height="1dp"
-            android:layout_weight="0.5"/>
-
-        <Button
-            android:id="@+id/continuedonate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Continue"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"/>
+            android:id="@+id/anonymousdonatecheck"
+            android:text="Donate as Anonymous"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Donation Method"
+            android:textSize="17sp"/>
+
+
+       <RadioGroup
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/radiogrp">
+
+           <RadioButton
+               android:id="@+id/bkash"
+               android:text="Bkash"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:drawableRight="@drawable/bkashlogo"
+               android:checked="false"
+               android:layout_marginBottom="10dp"/>
+
+           <RadioButton
+               android:id="@+id/nogod"
+               android:text="Nogod"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:checked="false"
+               android:drawableRight="@drawable/nogodlogo"
+               android:layout_marginBottom="10dp"/>
+
+           <RadioButton
+               android:id="@+id/rocket"
+               android:text="Rocket"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:checked="false"
+               android:drawableRight="@drawable/rocketlogo"
+               android:layout_marginBottom="10dp"/>
+       </RadioGroup>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Donation Amount"
+            android:textSize="17sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/DonationAmount"
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Amount"
+            android:textColorHint="#8F8383">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="numberDecimal"
+                android:textColor="#000"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/backfrmdonate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:backgroundTint="#831616"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"/>
+
+            <View
+                android:layout_width="5dp"
+                android:layout_height="1dp"
+                android:layout_weight="2"/>
+
+            <Button
+                android:id="@+id/continuedonate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Continue"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>

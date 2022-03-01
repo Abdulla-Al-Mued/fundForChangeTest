@@ -120,10 +120,10 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
                 ft2.commit();
 
                 break;
-                case  (R.id.nav_see_event):
-                //temp = new Share();
-                    Intent intent1 = new Intent(UserMainActivity.this, home.class);
-                    startActivity(intent1);
+            case  (R.id.nav_see_event):
+            //temp = new Share();
+                Intent intent1 = new Intent(UserMainActivity.this, home.class);
+                startActivity(intent1);
 
                 break;
 
