@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FundForChangeTest">
         <activity
+            android:name=".activities.user.finishEvent.finishEventDetails"
+            android:exported="false" />
+        <activity
             android:name=".activities.updateProfile"
             android:exported="false" />
         <activity
@@ -36,8 +39,9 @@
         <activity
             android:name=".activities.home"
             android:exported="false" />
-        <activity android:name=".activities.DonationActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".activities.DonationActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
             android:exported="true">

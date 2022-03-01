@@ -19,6 +19,7 @@ import com.example.fundforchangetest.activities.home;
 import com.example.fundforchangetest.activities.profile;
 import com.example.fundforchangetest.activities.user.event.createEventFragment;
 import com.example.fundforchangetest.activities.user.eventRequest.pendingEvents;
+import com.example.fundforchangetest.activities.user.finishEvent.finishEventFragment;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -136,6 +137,15 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
                 ft2.replace(R.id.container, new createEventFragment());
                 ft2.addToBackStack("tag_back");
                 ft2.commit();
+
+                break;
+
+            case  (R.id.nav_finish_event):
+                //temp = new Share();
+                FragmentTransaction ft3 = getSupportFragmentManager().beginTransaction();
+                ft3.replace(R.id.container, new finishEventFragment());
+                ft3.addToBackStack("tag_back");
+                ft3.commit();
 
                 break;
             case  (R.id.nav_see_event):

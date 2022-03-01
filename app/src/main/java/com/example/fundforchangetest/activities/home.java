@@ -1,5 +1,6 @@
 package com.example.fundforchangetest.activities;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.example.fundforchangetest.Models.Model;
+import com.example.fundforchangetest.Models.finishEventModel;
 import com.example.fundforchangetest.R;
 import com.example.fundforchangetest.activities.user.UserMainActivity;
 import com.example.fundforchangetest.adapters.commonRecyclerAdapter;
@@ -139,15 +142,24 @@ public class home extends AppCompatActivity {
         db.collection("event").whereEqualTo("status","accepted")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
 
 
                         for(DocumentSnapshot d : list){
-                            Model obj = d.toObject(Model.class);
-                            obj.setId(d.getId());
-                            datalist.add(obj);
+
+                            int donated = Math.toIntExact(d.getLong("donated"));
+                            int goal = Math.toIntExact(d.getLong("goal"));
+                            if(donated < goal){
+
+                                Model obj = d.toObject(Model.class);
+                                obj.setId(d.getId());
+                                datalist.add(obj);
+
+                            }
+
 
                         }
                         progressBar.setVisibility(View.GONE);
