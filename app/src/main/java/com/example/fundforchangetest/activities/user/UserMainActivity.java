@@ -7,9 +7,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,6 +38,7 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
     TextView name;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    @SuppressLint("RtlHardcoded")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +51,7 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
         //name = findViewById(R.id.profile_name);
 
         View header = navigationview.getHeaderView(0);
-        name = (TextView) header.findViewById(R.id.profile_name);
+        name = header.findViewById(R.id.profile_name);
         setHeader();
 
 
@@ -58,11 +62,11 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        drawerLayout.openDrawer(Gravity.LEFT);
 
         //hide or show item
         Menu menu = navigationview.getMenu();
         SharedPreferences sp3 = getSharedPreferences("datafile3",MODE_PRIVATE);
-        SharedPreferences.Editor ed3 = sp3.edit();
         String role = sp3.getString("role","");
 
         if(role.equals("user")){
