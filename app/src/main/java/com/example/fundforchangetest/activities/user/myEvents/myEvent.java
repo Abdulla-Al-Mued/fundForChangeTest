@@ -1,14 +1,22 @@
 package com.example.fundforchangetest.activities.user.myEvents;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.fundforchangetest.Models.myEventModel;
 import com.example.fundforchangetest.R;
+import com.example.fundforchangetest.activities.user.finishEvent.finishEventController;
+import com.example.fundforchangetest.adapters.myEventAdapter;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +24,10 @@ import com.example.fundforchangetest.R;
  * create an instance of this fragment.
  */
 public class myEvent extends Fragment {
+
+    RecyclerView recview;
+    List<myEventModel> datalist;
+    myEventAdapter adapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +73,16 @@ public class myEvent extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_myevent, container, false);
+        View view = inflater.inflate(R.layout.fragment_myevent, container, false);
+
+        SharedPreferences sp = this.getActivity().getSharedPreferences("datafile", Context.MODE_PRIVATE);
+        String uMail = sp.getString("email","");
+
+        recview = view.findViewById(R.id.my_event_recview);
+        myEventController ob = new myEventController(adapter,recview,datalist,getContext(),uMail);
+        ob.showItems();
+
+
+        return view;
     }
 }

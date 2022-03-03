@@ -39,7 +39,6 @@ public class otpVerification extends AppCompatActivity {
     EditText t1, t2, t3, t4, t5, t6;
     Button submit;
     TextView tvBtn, tv2;
-    FirebaseFirestore dbroot = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
 

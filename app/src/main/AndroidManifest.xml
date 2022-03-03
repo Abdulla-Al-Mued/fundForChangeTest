@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FundForChangeTest">
         <activity
+            android:name=".activities.forgotPassword.changePassword"
+            android:exported="false" />
+        <activity
+            android:name=".activities.forgotPassword.verifyUser"
+            android:exported="false" />
+        <activity
+            android:name=".activities.user.myEvents.myEventDetails"
+            android:exported="false" />
+        <activity
             android:name=".activities.user.finishEvent.finishEventDetails"
             android:exported="false" />
         <activity

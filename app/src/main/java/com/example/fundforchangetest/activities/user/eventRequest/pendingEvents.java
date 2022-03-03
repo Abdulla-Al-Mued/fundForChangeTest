@@ -2,21 +2,18 @@ package com.example.fundforchangetest.activities.user.eventRequest;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.example.fundforchangetest.Models.Model;
+
+
 import com.example.fundforchangetest.Models.pendingModel;
 import com.example.fundforchangetest.R;
-import com.example.fundforchangetest.adapters.commonRecyclerAdapter;
 import com.example.fundforchangetest.adapters.pendingEventsAdapter;
 
 import java.util.List;
@@ -27,7 +24,6 @@ public class pendingEvents extends Fragment {
     RecyclerView recyclerView;
     List<pendingModel> datalist;
     pendingEventsAdapter adapter;
-    pendingEventController ob;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

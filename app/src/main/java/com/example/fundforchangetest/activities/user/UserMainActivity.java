@@ -23,6 +23,7 @@ import com.example.fundforchangetest.activities.profile;
 import com.example.fundforchangetest.activities.user.event.createEventFragment;
 import com.example.fundforchangetest.activities.user.eventRequest.pendingEvents;
 import com.example.fundforchangetest.activities.user.finishEvent.finishEventFragment;
+import com.example.fundforchangetest.activities.user.myEvents.myEvent;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -70,7 +71,8 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
         String role = sp3.getString("role","");
 
         if(role.equals("user")){
-            menu.findItem(R.id.nav_myevents).setVisible(false);
+            menu.findItem(R.id.nav_event_request).setVisible(false);
+            menu.findItem(R.id.nav_finish_event).setVisible(false);
         }
 
         //menu.findItem(R.id.nav_login).setVisible(false);
@@ -128,7 +130,7 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
 
         //Fragment temp = null;
         switch (item.getItemId()){
-            case (R.id.nav_myevents):
+            case (R.id.nav_event_request):
                 FragmentTransaction ft1 = getSupportFragmentManager().beginTransaction();
                 ft1.replace(R.id.container, new pendingEvents());
                 ft1.addToBackStack("tag_back");
@@ -150,6 +152,15 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
                 ft3.replace(R.id.container, new finishEventFragment());
                 ft3.addToBackStack("tag_back");
                 ft3.commit();
+
+                break;
+
+            case  (R.id.nav_my_events):
+                //temp = new Share();
+                FragmentTransaction ft4 = getSupportFragmentManager().beginTransaction();
+                ft4.replace(R.id.container, new myEvent());
+                ft4.addToBackStack("tag_back");
+                ft4.commit();
 
                 break;
             case  (R.id.nav_see_event):
