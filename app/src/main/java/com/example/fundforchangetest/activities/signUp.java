@@ -62,6 +62,14 @@ public class signUp extends AppCompatActivity {
         register = findViewById(R.id.register);
         login = findViewById(R.id.login);
 
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), LogIn.class);
+                startActivity(intent);
+            }
+        });
+
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +125,7 @@ public class signUp extends AppCompatActivity {
                                 Intent intent = new Intent(getApplicationContext(), otpVerification.class);
                                 intent.putExtra("Number","01" + txt4.getEditText().getText().toString().trim());
                                 intent.putExtra("bkndOtp",otp);
+                                intent.putExtra("email",txt3.getEditText().getText().toString().trim());
                                 startActivity(intent);
 
                             }
@@ -125,7 +134,6 @@ public class signUp extends AppCompatActivity {
 
 
                 SharedPreferences sp = getSharedPreferences("datafile",MODE_PRIVATE);
-                SharedPreferences.Editor ed = sp.edit();
 
                 if(!(sp.contains("email"))){
 
@@ -141,7 +149,7 @@ public class signUp extends AppCompatActivity {
 
 
 
-                    db.collection("users").add(items)
+                    db.collection("user").add(items)
                             .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                 @Override
                                 public void onComplete(@NonNull Task<DocumentReference> task) {
@@ -241,8 +249,6 @@ public class signUp extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("datafile2",MODE_PRIVATE);
         SharedPreferences.Editor ed = sp.edit();
 
-        SharedPreferences sp1 = getSharedPreferences("datafile3",MODE_PRIVATE);
-        SharedPreferences.Editor ed1 = sp1.edit();
 
         t1 = txt4.getEditText().getText().toString().trim();
 
@@ -255,29 +261,11 @@ public class signUp extends AppCompatActivity {
             txt4.getEditText().setError("Invalid Number");
             return false;
         }
-        else if(sp.contains("Exist1") && sp1.contains("Exist2")){
-
-            txt4.getEditText().setError("Phone number already exist");
-            txt3.getEditText().setError("Email number already exist");
-            ed.remove("Exist1");
-            ed.commit();
-            ed1.remove("Exist2");
-            ed1.commit();
-            return false;
-        }
         else if(sp.contains("Exist1")){
 
             txt3.getEditText().setError("Email number already exist");
             ed.remove("Exist1");
             ed.commit();
-            return false;
-
-        }
-        else if(sp1.contains("Exist2")){
-
-            txt4.getEditText().setError("Phone number already exist");
-            ed1.remove("Exist2");
-            ed1.commit();
             return false;
 
         }
@@ -355,43 +343,21 @@ public class signUp extends AppCompatActivity {
 
                         for(DocumentSnapshot qs : list){
 
-                            String phone, email;
-                            phone = qs.getString("phone");
+                            String email;
                             email = qs.getString("email");
-
-                            String number = "+8801"+txt4.getEditText().getText().toString().trim();
                             String mail = txt3.getEditText().getText().toString().trim();
 
                             SharedPreferences sp = getSharedPreferences("datafile2",MODE_PRIVATE);
                             SharedPreferences.Editor ed = sp.edit();
 
-                            SharedPreferences sp1 = getSharedPreferences("datafile3",MODE_PRIVATE);
-                            SharedPreferences.Editor ed1 = sp1.edit();
-
-                            if(mail.equals(email)&&(number.equals(phone))){
-                                ed1.putString("Exist2","p");
-                                ed1.commit();
-                                ed.putString("Exist1","e");
-                                ed.commit();
 
 
-                                break;
-
-
-                            }
-                            else if((mail.equals(email))&&!(number.equals(phone))){
+                            if(mail.equals(email)){
 
                                 ed.putString("Exist1","e");
                                 ed.commit();
-
                                 break;
                             }
-                            else if(number.equals(phone)){
-                                ed1.putString("Exist2","p");
-                                ed1.commit();
-                                break;
-                            }
-
 
                         }
 

@@ -101,6 +101,7 @@ public class updateProfile extends AppCompatActivity {
         }
         if(p.length()!=14){
             phone.setError("Invalid phone number");
+            return;
         }
 
 

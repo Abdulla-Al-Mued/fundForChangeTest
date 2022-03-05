@@ -35,11 +35,12 @@ import java.util.concurrent.TimeUnit;
 
 public class otpVerification extends AppCompatActivity {
 
-    String otpBackend, msg="";
+    String otpBackend, msg="", x;
     EditText t1, t2, t3, t4, t5, t6;
     Button submit;
     TextView tvBtn, tv2;
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    boolean temp = false;
 
 
 
@@ -66,6 +67,7 @@ public class otpVerification extends AppCompatActivity {
         tv2 = findViewById(R.id.numberField);
         tv2.setText(getIntent().getStringExtra("Number"));
         otpBackend = getIntent().getStringExtra("bkndOtp");
+        x = getIntent().getStringExtra("email");
 
 
 
@@ -95,32 +97,47 @@ public class otpVerification extends AppCompatActivity {
                         PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(
                           otpBackend,copOtp
                         );
-                        FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential)
-                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                        progressBar.setVisibility(View.GONE);
-                                        submit.setVisibility(View.VISIBLE);
+                                progressBar.setVisibility(View.GONE);
+                                submit.setVisibility(View.VISIBLE);
 
-                                        if(task.isSuccessful()){
-                                            msg = "verification Complete";
-                                            Toast.makeText(otpVerification.this, msg, Toast.LENGTH_SHORT).show();
-                                            //insertData();
-                                            //verification();
-                                            setLogedIn();
-                                            Intent intent = new Intent(getApplicationContext(), UserMainActivity.class);
-                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                            FirebaseAuth.getInstance().signOut();
-                                            startActivity(intent);
-                                        }
-                                        else{
-                                            Toast.makeText(otpVerification.this, "Enter The Correct Otp Code", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
+                                if(task.isSuccessful()){
 
-                                });
+                                    msg = "verification Complete";
+                                    Toast.makeText(otpVerification.this, msg, Toast.LENGTH_SHORT).show();
+                                    //insertData();
+                                    //verification();
+                                    temp = true;
 
+
+                                    SharedPreferences sp = getSharedPreferences("datafile",MODE_PRIVATE);
+                                    SharedPreferences.Editor ed = sp.edit();
+                                    ed.putString("email",x);
+                                    ed.commit();
+
+                                    SharedPreferences sp3 = getSharedPreferences("datafile3",MODE_PRIVATE);
+                                    SharedPreferences.Editor ed3 = sp3.edit();
+                                    ed3.putString("role","user");
+                                    ed3.commit();
+
+                                    SharedPreferences sp2 = getSharedPreferences("temp",MODE_PRIVATE);
+                                    SharedPreferences.Editor ed2 = sp2.edit();
+                                    ed2.putString("status","firstTime");
+                                    ed2.commit();
+
+                                    Intent intent = new Intent(getApplicationContext(), UserMainActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    FirebaseAuth.getInstance().signOut();
+                                    startActivity(intent);
+                                }
+                                else{
+                                    Toast.makeText(otpVerification.this, "Enter The Correct Otp Code", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
                     }
                     else {
                         Toast.makeText(otpVerification.this, "Please Check your Internet Connection", Toast.LENGTH_SHORT).show();
@@ -170,22 +187,14 @@ public class otpVerification extends AppCompatActivity {
             }
         });
 
+        if(temp){
+
+
+
+        }
 
         moveTxtField();
 
-    }
-
-    public void setLogedIn() {
-
-        SharedPreferences sp = getSharedPreferences("datafile",MODE_PRIVATE);
-        SharedPreferences.Editor ed = sp.edit();
-        ed.putString("email",getIntent().getStringExtra("email"));
-        ed.commit();
-
-        SharedPreferences sp3 = getSharedPreferences("datafile3",MODE_PRIVATE);
-        SharedPreferences.Editor ed3 = sp3.edit();
-        ed3.putString("role","user");
-        ed3.commit();
     }
 
     private void moveTxtField() {

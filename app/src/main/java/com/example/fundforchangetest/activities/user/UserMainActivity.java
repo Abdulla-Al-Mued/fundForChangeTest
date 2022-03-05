@@ -17,6 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.fundforchangetest.R;
 import com.example.fundforchangetest.activities.home;
 import com.example.fundforchangetest.activities.profile;
@@ -24,12 +26,18 @@ import com.example.fundforchangetest.activities.user.event.createEventFragment;
 import com.example.fundforchangetest.activities.user.eventRequest.pendingEvents;
 import com.example.fundforchangetest.activities.user.finishEvent.finishEventFragment;
 import com.example.fundforchangetest.activities.user.myEvents.myEvent;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -44,6 +52,58 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_main);
+
+
+        SharedPreferences sp2 = getSharedPreferences("temp",MODE_PRIVATE);
+        String status = sp2.getString("status","");
+        SharedPreferences.Editor ed2 = sp2.edit();
+        /*ed2.putString("status","firstTime");
+        ed2.commit();*/
+
+        if(status.equals("firstTime")){
+
+            SharedPreferences sp = getSharedPreferences("datafile",MODE_PRIVATE);
+
+            ed2.remove("status");
+            ed2.commit();
+            Toast.makeText(this, "Firs Time Lodged In", Toast.LENGTH_SHORT).show();
+
+            db.collection("user")
+                    .whereEqualTo("email",sp.getString("email",""))
+                    .get()
+                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                            List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+
+                            for(DocumentSnapshot d : list){
+
+                                Map<String, Object> ud = new HashMap<>();
+                                ud.put("name",d.getString("name"));
+                                ud.put("email",d.getString("email"));
+                                ud.put("user",d.getString("user"));
+                                ud.put("password",d.getString("password"));
+                                ud.put("role",d.getString("role"));
+                                ud.put("phone",d.getString("phone"));
+
+                                db.collection("users")
+                                        .add(ud)
+                                        .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<DocumentReference> task) {
+
+                                            }
+                                        });
+
+                            }
+
+                        }
+                    });
+
+        }
+
+        //SharedPreferences sp = getSharedPreferences("datafile",MODE_PRIVATE);
 
 
         drawerLayout = findViewById(R.id.drawer_layout);

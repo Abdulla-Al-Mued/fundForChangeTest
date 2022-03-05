@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.fundforchangetest.R;
+import com.example.fundforchangetest.activities.forgotPassword.verifyUser;
 import com.example.fundforchangetest.activities.user.UserMainActivity;
 import com.example.fundforchangetest.otpVerification.otpVerification;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -56,6 +57,9 @@ public class LogIn extends AppCompatActivity {
         frogotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), verifyUser.class);
+                startActivity(intent);
 
             }
         });
