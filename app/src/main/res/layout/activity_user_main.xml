@@ -24,7 +24,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#BAB87E28"
+            android:background="#97DFDB"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:title=" "
@@ -34,10 +34,11 @@
             >
 
             <TextView
+                android:fontFamily="@font/actor"
                 android:id="@+id/tv_toolbar_custom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#fff"
+                android:textColor="#956E6E"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:text="Fund For Change"/>

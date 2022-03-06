@@ -9,10 +9,10 @@ public class myEventModel implements Serializable {
     @Exclude
     public String id;
     String name, description,location, email,phone, NID, uEmail;
-    int goal;
+    int goal,donated;
 
 
-    public myEventModel(String name, String description, String location, int goal
+    public myEventModel(String name, String description, String location, int goal,int donated
             , String email, String phone, String NID, String uEmail) {
         this.name = name;
         this.description = description;
@@ -22,13 +22,20 @@ public class myEventModel implements Serializable {
         this.NID = NID;
         this.uEmail = uEmail;
         this.goal = goal;
+        this.donated = donated;
     }
 
     public myEventModel(){
 
     }
 
+    public int getDonated() {
+        return donated;
+    }
 
+    public void setDonated(int donated) {
+        this.donated = donated;
+    }
 
     public String getId() {
         return id;

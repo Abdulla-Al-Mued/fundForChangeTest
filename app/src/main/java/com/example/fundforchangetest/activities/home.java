@@ -178,6 +178,7 @@ public class home extends AppCompatActivity {
         db.collection("event").whereEqualTo("status","accepted")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
@@ -185,8 +186,11 @@ public class home extends AppCompatActivity {
 
                         backup.clear();
                         for(DocumentSnapshot d : list){
+
+                            int donated = Math.toIntExact(d.getLong("donated"));
+                            int goal = Math.toIntExact(d.getLong("goal"));
                             String data = d.getString("name").toLowerCase();
-                            if(data.contains(query)) {
+                            if(data.contains(query) && donated < goal) {
                                 Model obj = d.toObject(Model.class);
                                 //obj.setId(d.getId());
                                 backup.add(obj);

@@ -153,7 +153,7 @@ public class createEventFragment extends Fragment {
 
                 t8 = Integer.parseInt(t4);
 
-                ob = new addEvent(t1,t2,t3,t8, donated, t5,t5,t7,uMail);
+                ob = new addEvent(t1,t2,t3,t8, donated, t5,t6,t7,uMail);
 
                 ob.insert();
                 txt.getEditText().setText("");

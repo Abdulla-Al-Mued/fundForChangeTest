@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardCornerRadius="5dp"
+    app:cardCornerRadius="10dp"
     android:elevation="10dp"
     app:cardUseCompatPadding="true"
     android:id="@+id/click"
@@ -13,6 +13,7 @@
 
 
     <RelativeLayout
+        android:background="#DD2929"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
@@ -21,9 +22,10 @@
         <TextView
             android:id="@+id/txt1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="57dp"
+            android:fontFamily="@font/actor"
             android:text="Name"
-            android:textColor="@color/black"
+            android:textColor="#FFFFFF"
             android:textSize="25sp"
             android:textStyle="bold">
 
@@ -33,14 +35,17 @@
         <TextView
             android:id="@+id/txt2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_below="@+id/txt1"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/actor"
             android:text="Description"
-            android:textColor="@color/black"
+            android:textColor="#FFFFFF"
             android:textSize="18sp" />
 
         <ProgressBar
+            android:progressBackgroundTint="#EFDADA"
             android:id="@+id/goalprogress"
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="match_parent"

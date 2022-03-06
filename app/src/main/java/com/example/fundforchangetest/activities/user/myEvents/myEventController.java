@@ -45,6 +45,7 @@ public class myEventController {
 
         db.collection("event")
                 .whereEqualTo("uEmail",uEmail)
+                .whereEqualTo("status","accepted")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override

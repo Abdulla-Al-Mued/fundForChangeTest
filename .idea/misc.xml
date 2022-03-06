@@ -7,15 +7,17 @@
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/drawable/ic_baseline_event_24.xml" value="0.1" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/drawable/round_shape.xml" value="0.1" />
+        <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/drawable/sch.xml" value="0.155" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/drawable/shape.xml" value="0.1" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/drawable/shape2.xml" value="0.103" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_change_password.xml" value="0.1953125" />
-        <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_details.xml" value="0.1" />
+        <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_details.xml" value="0.18" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_donate.xml" value="0.209375" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_finish_event_details.xml" value="0.209375" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_home.xml" value="0.2109704641350211" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_log_in.xml" value="0.22" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_my_event_details.xml" value="0.209375" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_otp_verification.xml" value="0.25" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_pending_details.xml" value="0.209375" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/activity_profile.xml" value="0.25" />
@@ -30,10 +32,10 @@
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/fragment_myevent.xml" value="0.209375" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/fragment_pending_events.xml" value="0.209375" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/fragment_user_main_activity.xml" value="0.1" />
-        <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/my_event_single_row.xml" value="0.209375" />
+        <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/my_event_single_row.xml" value="0.25" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/nav_header_user_main.xml" value="0.21" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/pending_single_row.xml" value="0.209375" />
-        <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/single_row.xml" value="0.1" />
+        <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/single_row.xml" value="0.22" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/layout/toolbar.xml" value="0.1" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/menu/main_menu.xml" value="0.18" />
         <entry key="..\:/Users/Abdulla Al Mued/AndroidStudioProjects/FundForChangeTest/app/src/main/res/menu/menu_toolbar.xml" value="0.1" />

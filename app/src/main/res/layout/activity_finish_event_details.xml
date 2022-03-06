@@ -1,9 +1,310 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context=".activities.user.finishEvent.finishEventDetails">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    app:cardElevation="10dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#FFFFFF">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="80dp"
+                                android:layout_marginTop="25dp"
+                                android:text="Event Information"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:textSize="20sp" />
+
+
+                        </RelativeLayout>
+
+
+                        <View
+                            android:id="@+id/view5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="#97DFDB" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginTop="10dp"
+                            android:drawablePadding="10dp"
+                            android:padding="10dp"
+                            android:text="Event Name"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:textColor="@color/black" />
+                        <View
+                            android:id="@+id/view6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="#97DFDB" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:drawablePadding="10dp"
+                            android:padding="10dp"
+                            android:text="event name"
+                            android:id="@+id/event_name"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:drawablePadding="10dp"
+                            android:padding="10dp"
+                            android:text="Event Description"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+
+                            android:textColor="@color/black" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:drawablePadding="10dp"
+                            android:padding="10dp"
+                            android:text="event description"
+                            android:id="@+id/event_desc"
+                            android:textColor="@color/black" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:drawablePadding="10dp"
+                            android:padding="10dp"
+                            android:text="Event Location"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:textColor="@color/black" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:drawablePadding="10dp"
+                            android:padding="10dp"
+                            android:text="location"
+                            android:id="@+id/event_location"
+                            android:textColor="@color/black" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:drawablePadding="10dp"
+                            android:padding="10dp"
+                            android:text="Destination Goal"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:textColor="@color/black" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:drawablePadding="10dp"
+                            android:padding="10dp"
+                            android:text="Goal"
+                            android:id="@+id/event_goal"
+                            android:textColor="@color/black" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:drawablePadding="10dp"
+                            android:padding="10dp"
+                            android:text="Total Donation"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:textColor="@color/black" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:drawablePadding="10dp"
+                            android:padding="10dp"
+                            android:text="Donated"
+                            android:id="@+id/total_donation"
+                            android:textColor="@color/black" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:drawablePadding="10dp"
+                            android:padding="10dp"
+                            android:text="Email"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:drawablePadding="10dp"
+                            android:padding="10dp"
+                            android:text="event@gmail.com"
+                            android:id="@+id/event_email"
+                            android:textColor="@color/black" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:drawablePadding="10dp"
+                            android:padding="10dp"
+                            android:text="Phone Number"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:textColor="@color/black" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:drawablePadding="10dp"
+                            android:padding="10dp"
+                            android:text="01831553096"
+                            android:id="@+id/event_phone"
+                            android:textColor="@color/black" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:drawablePadding="10dp"
+                            android:padding="10dp"
+                            android:text="NID"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:textColor="@color/black" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:drawablePadding="10dp"
+                            android:padding="10dp"
+                            android:text="1831553096"
+                            android:id="@+id/event_nid"
+                            android:textColor="@color/black" />
+
+
+
+                    </LinearLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    app:cardElevation="10dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#FFFFFF">
+
+                            <Button
+                                android:id="@+id/finish_btn"
+                                android:layout_width="150dp"
+                                android:layout_height="40dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginTop="15dp"
+                                android:background="@color/black"
+                                android:elevation="0dp"
+                                android:text="Finish"
+                                android:textSize="14sp"
+                                app:backgroundTint="#831616" />
+                            <Button
+                                android:id="@+id/reject_btn"
+                                android:layout_width="150dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="15dp"
+                                android:background="@color/black"
+                                android:layout_centerVertical="true"
+                                android:elevation="0dp"
+                                android:text="delete"
+                                android:textSize="14sp"
+                                app:backgroundTint="#831616" />
+
+
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
