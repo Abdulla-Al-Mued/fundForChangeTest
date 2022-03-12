@@ -28,6 +28,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -111,12 +113,15 @@ public class DonationActivity extends AppCompatActivity {
         if(cb.isChecked()) {
             Map<String, Object> items = new HashMap<>();
 
+            Date currentTime = Calendar.getInstance().getTime();
+
             items.put("Name", "Anonymous");
             items.put("Phone No.", "Anonymous");
             items.put("Email", "Anonymous");
             items.put("Account Type", Account);
             items.put("Donated To", getID);
             items.put("Amount", amount);
+            items.put("dTime",currentTime);
 
             db.collection("Donations").add(items)
                     .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
@@ -141,12 +146,16 @@ public class DonationActivity extends AppCompatActivity {
         else {
             Map<String, Object> items = new HashMap<>();
 
+
+            Date currentTime = Calendar.getInstance().getTime();
+
             items.put("Name", donatorName);
             items.put("Phone No.", donatorPhone);
             items.put("Email", donatorEmail);
             items.put("Account Type", Account);
             items.put("Donated To", getID);
             items.put("Amount", amount);
+            items.put("dTime",currentTime);
 
             db.collection("Donations").add(items)
                     .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {

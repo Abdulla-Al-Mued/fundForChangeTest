@@ -14,6 +14,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,7 +52,7 @@ public class addEvent {
 
     public void insert(){
 
-
+        Date currentTime = Calendar.getInstance().getTime();
 
             Map<String, Object> items = new HashMap<>();
 
@@ -65,6 +67,7 @@ public class addEvent {
             items.put("NID",nid);
             items.put("status","pending");
             items.put("uEmail",uMail);
+            items.put("dTime",currentTime);
 
 
             dbroot.collection("event").add(items)

@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.user.dashboard">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="#863700B3"
+            android:padding="5dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:boxStrokeColor="#6F3700B3"
+                android:hint="Select"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                >
+
+                <AutoCompleteTextView
+                    android:fontFamily="@font/actor"
+                    android:textColor="@color/white"
+                    android:id="@+id/dropdown_menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="none"
+                    />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/header"
+                android:layout_marginTop="20dp"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:fontFamily="@font/actor"
+                android:textSize="30sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="Activity Of All Time"
+                />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="-100dp"
+            android:padding="5dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="30dp"
+                app:cardElevation="20dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:src="@drawable/ic_donation"/>
+
+
+                    <TextView
+                        android:fontFamily="@font/actor"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Total amount"
+                        />
+                    <TextView
+                        android:textAlignment="center"
+                        android:id="@+id/last24"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="30dp"
+                app:cardElevation="10dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:src="@drawable/ic_total_donor"/>
+
+
+                    <TextView
+                        android:fontFamily="@font/actor"
+                        android:textColor="@color/black"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="Total donor"
+                        />
+                    <TextView
+                        android:id="@+id/tDonor"
+                        android:fontFamily="@font/actor"
+                        android:textColor="@color/black"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        />
+
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="30dp"
+                app:cardElevation="20dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:src="@drawable/ic_dashboard_event"
+                        />
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="total event"
+                        />
+
+                    <TextView
+                        android:id="@+id/total_event"
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+
+
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="30dp"
+                app:cardElevation="10dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:src="@drawable/ic_pending_event"
+                        />
+
+                    <TextView
+                        android:fontFamily="@font/actor"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pending events"
+                        />
+                    <TextView
+                        android:id="@+id/pending_events"
+                        android:fontFamily="@font/actor"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="30dp"
+                app:cardElevation="20dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:src="@drawable/ic_dashboard_user"/>
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/actor"
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Users"/>
+
+                    <TextView
+                        android:id="@+id/users"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/actor"
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="30dp"
+                app:cardElevation="10dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:src="@drawable/ic_finished_event"
+                        />
+
+                    <TextView
+                        android:fontFamily="@font/actor"
+                        android:textColor="@color/black"
+                        android:layout_width="match_parent"
+                        android:textAlignment="center"
+                        android:layout_height="wrap_content"
+                        android:text="Finished events"
+                        />
+
+                    <TextView
+                        android:id="@+id/finish_event"
+                        android:fontFamily="@font/actor"
+                        android:textColor="@color/black"
+                        android:layout_width="match_parent"
+                        android:textAlignment="center"
+                        android:layout_height="wrap_content"
+
+                        />
+
+
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

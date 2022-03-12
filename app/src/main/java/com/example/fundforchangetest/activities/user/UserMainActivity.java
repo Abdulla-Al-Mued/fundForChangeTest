@@ -9,6 +9,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -35,6 +37,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,6 +71,7 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
             ed2.remove("status");
             ed2.commit();
             Toast.makeText(this, "Firs Time Lodged In", Toast.LENGTH_SHORT).show();
+            Date currentTime = Calendar.getInstance().getTime();
 
             db.collection("user")
                     .whereEqualTo("email",sp.getString("email",""))
@@ -86,6 +91,7 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
                                 ud.put("password",d.getString("password"));
                                 ud.put("role",d.getString("role"));
                                 ud.put("phone",d.getString("phone"));
+                                ud.put("dTime",currentTime);
 
                                 db.collection("users")
                                         .add(ud)
@@ -133,6 +139,7 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
         if(role.equals("user")){
             menu.findItem(R.id.nav_event_request).setVisible(false);
             menu.findItem(R.id.nav_finish_event).setVisible(false);
+            menu.findItem(R.id.nav_dashboard).setVisible(false);
         }
 
         //menu.findItem(R.id.nav_login).setVisible(false);
@@ -224,9 +231,33 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
 
                 break;
             case  (R.id.nav_see_event):
-            //temp = new Share();
+                //temp = new Share();
                 Intent intent1 = new Intent(UserMainActivity.this, home.class);
                 startActivity(intent1);
+
+                break;
+
+            case  (R.id.nav_dashboard):
+                //temp = new Share();
+                Intent intent2 = new Intent(UserMainActivity.this, dashboard.class);
+                startActivity(intent2);
+
+                break;
+
+            case  (R.id.exit):
+                //temp = new Share();
+                new AlertDialog.Builder(this)
+                        .setMessage("Are you sure you want to exit")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finishAffinity();
+                                //System.exit(0);
+                            }
+                        })
+                        .setNegativeButton("No",null)
+                        .show();
 
                 break;
 
