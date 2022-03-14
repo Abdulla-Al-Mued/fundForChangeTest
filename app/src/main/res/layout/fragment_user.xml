@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#97DFDB"
-    tools:context=".activities.user.eventRequest.pendingEvents">
-
+    tools:context=".activities.user.users.userFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.fundforchangetest.R;
 import com.example.fundforchangetest.activities.forgotPassword.verifyUser;
+import com.example.fundforchangetest.activities.security.PasswordEncryptor;
 import com.example.fundforchangetest.activities.user.UserMainActivity;
 import com.example.fundforchangetest.otpVerification.otpVerification;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +27,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.security.NoSuchAlgorithmException;
 
 public class LogIn extends AppCompatActivity {
 
@@ -99,17 +102,23 @@ public class LogIn extends AppCompatActivity {
                                 for(QueryDocumentSnapshot q: queryDocumentSnapshots){
 
 
-                                    String mail ,pass, role;
+                                    String mail ,pass, role, user;
 
                                     mail = q.getString("email");
                                     pass = q.getString("password");
                                     role = q.getString("role");
+                                    user = q.getString("user");
 
                                     String email = uEmail.getEditText().getText().toString();
-                                    String password = uPassword.getEditText().getText().toString();
+                                    String password = null;
+                                    try {
+                                        password = PasswordEncryptor.getInstance().encriptPassword(uPassword.getEditText().getText().toString());
+                                    } catch (NoSuchAlgorithmException e) {
+                                        e.printStackTrace();
+                                    }
 
 
-                                    if(mail.equals(email)&&(pass.equals(password))){
+                                    if(mail.equals(email)&&(pass.equals(password)) || user.equals(email)&&(pass.equals(password))){
 
                                         uEmail.getEditText().setError(null);
                                         uEmail.setErrorEnabled(false);
@@ -123,7 +132,7 @@ public class LogIn extends AppCompatActivity {
 
                                         SharedPreferences sp = getSharedPreferences("datafile",MODE_PRIVATE);
                                         SharedPreferences.Editor ed = sp.edit();
-                                        ed.putString("email",uEmail.getEditText().getText().toString().trim());
+                                        ed.putString("email",mail);
                                         ed.commit();
 
                                         SharedPreferences sp3 = getSharedPreferences("datafile3",MODE_PRIVATE);
@@ -142,7 +151,7 @@ public class LogIn extends AppCompatActivity {
                                     }
 
 
-                                    else if(!(mail.equals(email))&&!(pass.equals(password)))
+                                    else if(!(mail.equals(email))&&!(pass.equals(password)) || !(user.equals(email))&&!(pass.equals(password)))
                                     {
                                         uEmail.getEditText().setError("User Not found");
                                         uPassword.getEditText().setError("Password Unmatched");
@@ -200,7 +209,7 @@ public class LogIn extends AppCompatActivity {
     private boolean validateEmail() {
 
         String t1;
-        String checkEmail = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        //String checkEmail = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
         t1 = uEmail.getEditText().getText().toString().trim();
 
@@ -209,10 +218,8 @@ public class LogIn extends AppCompatActivity {
             uEmail.getEditText().setError("Invalid Email");
             return false;
 
-        } else if (!t1.matches(checkEmail)) {
-            uEmail.getEditText().setError("Invalid Email");
-            return false;
-        } else {
+        }
+        else {
             uEmail.getEditText().setError(null);
             uEmail.setErrorEnabled(false);
             return true;

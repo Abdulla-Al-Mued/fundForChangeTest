@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FundForChangeTest">
         <activity
+            android:name=".activities.user.users.userDetails"
+            android:exported="false" />
+        <activity
             android:name=".activities.user.dashboard"
             android:exported="false" />
         <activity

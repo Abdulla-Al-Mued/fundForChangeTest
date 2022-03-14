@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.fundforchangetest.R;
 import com.example.fundforchangetest.activities.profile;
+import com.example.fundforchangetest.activities.security.PasswordEncryptor;
 import com.example.fundforchangetest.activities.updateProfile;
 import com.example.fundforchangetest.activities.user.UserMainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,6 +24,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,8 +59,11 @@ public class changePassword extends AppCompatActivity {
                 }
 
                 Map<String, Object> ud = new HashMap<>();
-                ud.put("password",newPass.getEditText().getText().toString().trim());
-
+                try {
+                    ud.put("password",PasswordEncryptor.getInstance().encriptPassword(newPass.getEditText().getText().toString().trim()));
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
 
 
                 db.collection("users")
@@ -79,9 +84,16 @@ public class changePassword extends AppCompatActivity {
                                                 @Override
                                                 public void onSuccess(Void unused) {
                                                     SharedPreferences sp = getSharedPreferences("datafile5",MODE_PRIVATE);
+                                                    SharedPreferences sp1 = getSharedPreferences("datafile",MODE_PRIVATE);
+                                                    SharedPreferences.Editor ed = sp1.edit();
+                                                    ed.putString("email",sp.getString("email",""));
+                                                    ed.commit();
+
+
                                                     SharedPreferences.Editor ed3 = sp.edit();
                                                     ed3.remove("email");
                                                     ed3.commit();
+
                                                     Toast.makeText(changePassword.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
                                                     Intent intent = new Intent(getApplicationContext(), UserMainActivity.class);
                                                     startActivity(intent);

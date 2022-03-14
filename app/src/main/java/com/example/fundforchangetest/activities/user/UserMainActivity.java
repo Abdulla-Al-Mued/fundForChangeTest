@@ -24,10 +24,12 @@ import android.widget.Toast;
 import com.example.fundforchangetest.R;
 import com.example.fundforchangetest.activities.home;
 import com.example.fundforchangetest.activities.profile;
+import com.example.fundforchangetest.activities.security.PasswordEncryptor;
 import com.example.fundforchangetest.activities.user.event.createEventFragment;
 import com.example.fundforchangetest.activities.user.eventRequest.pendingEvents;
 import com.example.fundforchangetest.activities.user.finishEvent.finishEventFragment;
 import com.example.fundforchangetest.activities.user.myEvents.myEvent;
+import com.example.fundforchangetest.activities.user.users.userFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -37,6 +39,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -88,7 +91,11 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
                                 ud.put("name",d.getString("name"));
                                 ud.put("email",d.getString("email"));
                                 ud.put("user",d.getString("user"));
-                                ud.put("password",d.getString("password"));
+                                try {
+                                    ud.put("password",PasswordEncryptor.getInstance().encriptPassword(d.getString("password")));
+                                } catch (NoSuchAlgorithmException e) {
+                                    e.printStackTrace();
+                                }
                                 ud.put("role",d.getString("role"));
                                 ud.put("phone",d.getString("phone"));
                                 ud.put("dTime",currentTime);
@@ -140,6 +147,7 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
             menu.findItem(R.id.nav_event_request).setVisible(false);
             menu.findItem(R.id.nav_finish_event).setVisible(false);
             menu.findItem(R.id.nav_dashboard).setVisible(false);
+            menu.findItem(R.id.users).setVisible(false);
         }
 
         //menu.findItem(R.id.nav_login).setVisible(false);
@@ -147,9 +155,9 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
         navigationview.setNavigationItemSelectedListener(this);
 
         //checked item
-        navigationview.setCheckedItem(R.id.nav_create_event);
+        navigationview.setCheckedItem(R.id.nav_my_events);
         //default fragment
-        getSupportFragmentManager().beginTransaction().replace(R.id.container,new createEventFragment()).addToBackStack(null).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container,new myEvent()).addToBackStack(null).commit();
     }
 
     private void setHeader() {
@@ -230,6 +238,15 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
                 ft4.commit();
 
                 break;
+
+            case  (R.id.users):
+                //temp = new Share();
+                FragmentTransaction ft5 = getSupportFragmentManager().beginTransaction();
+                ft5.replace(R.id.container, new userFragment());
+                ft5.addToBackStack("tag_back");
+                ft5.commit();
+
+                break;
             case  (R.id.nav_see_event):
                 //temp = new Share();
                 Intent intent1 = new Intent(UserMainActivity.this, home.class);
@@ -247,7 +264,7 @@ public class UserMainActivity extends AppCompatActivity implements NavigationVie
             case  (R.id.exit):
                 //temp = new Share();
                 new AlertDialog.Builder(this)
-                        .setMessage("Are you sure you want to exit")
+                        .setMessage("Are you sure you want to exit?")
                         .setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override

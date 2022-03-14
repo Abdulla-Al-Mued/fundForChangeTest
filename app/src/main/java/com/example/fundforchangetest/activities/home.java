@@ -16,10 +16,12 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.fundforchangetest.Models.Model;
 import com.example.fundforchangetest.Models.finishEventModel;
 import com.example.fundforchangetest.R;
+import com.example.fundforchangetest.activities.security.PasswordEncryptor;
 import com.example.fundforchangetest.activities.user.UserMainActivity;
 import com.example.fundforchangetest.adapters.commonRecyclerAdapter;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,6 +29,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -122,7 +125,7 @@ public class home extends AppCompatActivity {
     public void onBackPressed(){
 
         new AlertDialog.Builder(this)
-                .setMessage("Are you sure you want to exit")
+                .setMessage("Are you sure you want to exit?")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override

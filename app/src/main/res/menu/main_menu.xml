@@ -42,6 +42,10 @@
             <group android:checkableBehavior="single">
 
                 <item
+                    android:id="@+id/users"
+                    android:icon="@drawable/ic_user"
+                    android:title="Users" />
+                <item
                     android:id="@+id/nav_dashboard"
                     android:icon="@drawable/ic_dashboard"
                     android:title="Dashboard" />
@@ -49,6 +53,7 @@
                     android:id="@+id/exit"
                     android:icon="@drawable/ic_exit"
                     android:title="EXIT" />
+
 
             </group>
 

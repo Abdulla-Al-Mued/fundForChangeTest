@@ -1,6 +1,4 @@
-package com.example.fundforchangetest.activities.user.eventRequest;
-
-import static java.security.AccessController.getContext;
+package com.example.fundforchangetest.activities.user.users;
 
 import android.content.Context;
 import android.os.Build;
@@ -9,11 +7,8 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.fundforchangetest.Models.Model;
-import com.example.fundforchangetest.Models.pendingModel;
-import com.example.fundforchangetest.activities.home;
-import com.example.fundforchangetest.adapters.commonRecyclerAdapter;
-import com.example.fundforchangetest.adapters.pendingEventsAdapter;
+import com.example.fundforchangetest.Models.userModel;
+import com.example.fundforchangetest.adapters.userAdapter;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,15 +17,15 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class pendingEventController {
+public class userController {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    pendingEventsAdapter adapter;
+    userAdapter adapter;
     RecyclerView recyclerView;
-    List<pendingModel> datalist, backup;
+    List<userModel> datalist, backup;
     Context ctx;
 
-    public pendingEventController(pendingEventsAdapter adapter, RecyclerView recyclerView, List<pendingModel> datalist, Context ctx, List<pendingModel> backup) {
+    public userController(userAdapter adapter, RecyclerView recyclerView, List<userModel> datalist, Context ctx, List<userModel> backup) {
         this.adapter = adapter;
         this.recyclerView = recyclerView;
         this.datalist = datalist;
@@ -43,14 +38,14 @@ public class pendingEventController {
         recyclerView.setLayoutManager(new LinearLayoutManager(ctx));
         datalist = new ArrayList<>();
 
-        adapter = new pendingEventsAdapter(datalist,ctx);
+        adapter = new userAdapter(datalist,ctx);
         recyclerView.setAdapter(adapter);
 
 
         //List<pendingModel> finalDatalist = datalist;
         //pendingEventsAdapter finalAdapter = adapter;
 
-        db.collection("event").whereEqualTo("status","pending")
+        db.collection("users").whereEqualTo("role","user")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -59,7 +54,7 @@ public class pendingEventController {
 
 
                         for(DocumentSnapshot d : list){
-                            pendingModel obj = d.toObject(pendingModel.class);
+                            userModel obj = d.toObject(userModel.class);
                             obj.setId(d.getId());
                             datalist.add(obj);
 
@@ -74,7 +69,7 @@ public class pendingEventController {
         recyclerView.setLayoutManager(new LinearLayoutManager(ctx));
         backup = new ArrayList<>();
 
-        db.collection("event").whereEqualTo("status","pending")
+        db.collection("users").whereEqualTo("role","user")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -88,14 +83,14 @@ public class pendingEventController {
 
                             String data = d.getString("name").toLowerCase();
                             if(data.contains(query) ) {
-                                pendingModel obj = d.toObject(pendingModel.class);
+                                userModel obj = d.toObject(userModel.class);
                                 //obj.setId(d.getId());
                                 backup.add(obj);
                             }
 
                         }
                         //adapter.notifyDataSetChanged();
-                        adapter = new pendingEventsAdapter(backup, ctx);
+                        adapter = new userAdapter(backup, ctx);
                         recyclerView.setAdapter(adapter);
 
 

@@ -23,7 +23,7 @@ public class finishEventDetails extends AppCompatActivity {
 
     TextView t1,t2,t3, t4, t5, t6, t7;
     finishEventModel ob;
-    Button finish;
+    Button finish, delete;
     FirebaseFirestore db  = FirebaseFirestore.getInstance();
 
     @Override
@@ -40,6 +40,7 @@ public class finishEventDetails extends AppCompatActivity {
         t6 = (TextView) findViewById(R.id.event_email);
         t7 = (TextView) findViewById(R.id.event_phone);
         finish = findViewById(R.id.finish_btn);
+        delete = findViewById(R.id.delete_btn);
 
 
         ob = (finishEventModel) getIntent().getSerializableExtra("product");
@@ -76,6 +77,31 @@ public class finishEventDetails extends AppCompatActivity {
                             }
                         });
 
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                db.collection("event").document(ob.getId()).delete()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(finishEventDetails.this, "Deleted successfully", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(finishEventDetails.this, UserMainActivity.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+
+                                Toast.makeText(finishEventDetails.this, "event deletion is not successful", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(finishEventDetails.this, UserMainActivity.class);
+                                startActivity(intent);
+
+                            }
+                        });
             }
         });
 
