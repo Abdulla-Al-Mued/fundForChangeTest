@@ -325,26 +325,7 @@
                             android:text="1831553096"
                             android:id="@+id/event_nid"
                             android:textColor="@color/black" />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:drawablePadding="10dp"
-                            android:padding="10dp"
-                            android:text="Account Type"
-                            android:textStyle="bold"
-                            android:textSize="17sp"
-                            android:textColor="@color/black" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:drawablePadding="10dp"
-                            android:padding="10dp"
-                            android:text="Bkash"
-                            android:id="@+id/event_transaction_type"
-                            android:textColor="@color/black" />
+                        
 
                     </LinearLayout>
 
