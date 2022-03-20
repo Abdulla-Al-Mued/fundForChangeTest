@@ -337,8 +337,29 @@
 
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            >
+
+            <Button
+                android:id="@+id/bnt_getReport"
+                android:layout_marginTop="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/teal_700"
+                android:text="Get report"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                />
+
+        </LinearLayout>
 
 
     </LinearLayout>
+
+
+
 
 </androidx.core.widget.NestedScrollView>

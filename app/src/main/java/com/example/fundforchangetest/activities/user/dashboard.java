@@ -10,10 +10,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fundforchangetest.R;
+import com.example.fundforchangetest.activities.pdfGenerator.downloadDashboardData;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -32,6 +34,7 @@ public class dashboard extends AppCompatActivity {
     ArrayAdapter<String> adapterItems;
     long currentTime;
     Date time = new Date(currentTime);
+    Button generatePdf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class dashboard extends AppCompatActivity {
         users = findViewById(R.id.users);
         finishEvent = findViewById(R.id.finish_event);
         header = findViewById(R.id.header);
+        generatePdf = findViewById(R.id.bnt_getReport);
 
 
         adapterItems = new ArrayAdapter<String>(this, R.layout.list_items, items);
@@ -87,9 +91,28 @@ public class dashboard extends AppCompatActivity {
                     header.setText("Activity Of Last 1 Month");
                 }
                 else if(item.equals("All Time")){
+                    currentTime = new Date().getTime();
+                    time = new Date(currentTime);
                     showAll();
+                    showPendingEvent1();
+                    showUser1();
+                    header.setText("Activity Of All Time");
                 }
             }
+        });
+
+        generatePdf.setOnClickListener(v -> {
+
+            Intent intent = new Intent(getApplicationContext(), downloadDashboardData.class);
+            intent.putExtra("TA",last24.getText());
+            intent.putExtra("TD",tdonor.getText());
+            intent.putExtra("TE",totalEvent.getText());
+            intent.putExtra("PE",pendingEvent.getText());
+            intent.putExtra("U",users.getText());
+            intent.putExtra("FE",finishEvent.getText());
+            intent.putExtra("H",header.getText());
+            startActivity(intent);
+
         });
 
     }
@@ -197,9 +220,72 @@ public class dashboard extends AppCompatActivity {
 
     }
 
+    public void showPendingEvent1(){
+
+
+        db.collection("event").whereLessThan("dTime",time)
+                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+
+                int ac = 0,fe = 0, pd = 0;
+                String status;
+
+                for(DocumentSnapshot d : list){
+
+
+                    status = d.getString("status");
+                    if(status.equals("accepted")){
+                        ac = ac + 1;
+                    }
+                    if(status.equals("pending")){
+                        pd = pd + 1;
+                    }
+                    if (status.equals("finish")){
+                        fe = fe + 1;
+                    }
+
+                }
+
+                totalEvent.setText(String.valueOf(ac));
+                pendingEvent.setText(String.valueOf(pd));
+                finishEvent.setText(String.valueOf(fe));
+
+            }
+        });
+
+    }
+
     public void showUser(){
 
         db.collection("users").whereGreaterThan("dTime",time)
+                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+
+                int tu=0;
+
+                for(DocumentSnapshot d : list){
+
+                    if(d.getString("role").equals("user")){
+                        tu = tu + 1;
+                    }
+                }
+                users.setText(String.valueOf(tu));
+
+            }
+        });
+
+    }
+
+    public void showUser1(){
+
+        db.collection("users").whereLessThan("dTime",time)
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
