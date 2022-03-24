@@ -209,25 +209,6 @@
                             android:text="01831553096"
                             android:id="@+id/event_phone"
                             android:textColor="@color/black" />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:drawablePadding="10dp"
-                            android:padding="10dp"
-                            android:text="NID"
-                            android:textStyle="bold"
-                            android:textSize="17sp"
-                            android:textColor="@color/black" />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:drawablePadding="10dp"
-                            android:padding="10dp"
-                            android:text="1831553096"
-                            android:id="@+id/event_nid"
-                            android:textColor="@color/black" />
 
 
                     </LinearLayout>
