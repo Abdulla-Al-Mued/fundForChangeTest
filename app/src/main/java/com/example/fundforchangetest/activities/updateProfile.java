@@ -107,11 +107,14 @@ public class updateProfile extends AppCompatActivity {
 
         SharedPreferences sp = getSharedPreferences("datafile",MODE_PRIVATE);
 
+
         Map<String, Object> ud = new HashMap<>();
         ud.put("name",name.getEditText().getText().toString().trim());
         ud.put("user",uName.getEditText().getText().toString().trim());
         ud.put("email",email.getEditText().getText().toString().trim());
         ud.put("phone",phone.getEditText().getText().toString().trim());
+
+
 
 
         db.collection("users")
@@ -131,6 +134,9 @@ public class updateProfile extends AppCompatActivity {
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void unused) {
+                                            SharedPreferences.Editor ed = sp.edit();
+                                            ed.putString("email",email.getEditText().getText().toString().trim());
+                                            ed.commit();
                                             Toast.makeText(updateProfile.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
                                             Intent intent = new Intent(getApplicationContext(), profile.class);
                                             startActivity(intent);
